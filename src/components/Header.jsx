@@ -7,7 +7,7 @@ export const Header=()=>
     
   }
     return(
-      <>
+     
     <header >
   <nav className="navbar navbar-expand-md navbar-dark fixed-top nav-background ">
     <div className="container-fluid "> 
@@ -42,8 +42,5 @@ export const Header=()=>
     </div>
   </nav>
 </header>
-
- 
-   </>
     )
 }

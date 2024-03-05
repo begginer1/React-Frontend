@@ -9,24 +9,20 @@
 {
     display: flex;
     flex-direction: column;
-  
+ 
     
 }
 
-center
+.center
 {
-  
+    display: flex;
+    
     align-self: center;
+    flex-direction: column;
+    
 }
 
- .CrimeInfo
- {
-    width:100%;
-  text-align: left;
-  align-content: center;
-
-
- }
+ 
 
  .row
  {
@@ -35,9 +31,14 @@ justify-content:center ;
 
 .CrimeImage{
 border: solid;
-
+align-self: center;
 }
 
+.Register
+{
+    display: flex;
+    justify-content: center;
+}
 .About
 {
     background-color: #50C4ED;

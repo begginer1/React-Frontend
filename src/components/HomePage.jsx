@@ -14,42 +14,44 @@ export function  HomePage()
       <div className="row mt-4 ">
       <div className="col-xl-3 ">
       <div className='center'>
-        <img className="bd-placeholder-img rounded-circle CrimeImage" src="https://pandc.stanmorepublicschool.com.au/wp-content/uploads/2021/11/lost-and-found-lrg.jpeg" width="140" height="140" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder" preserveAspectRatio="xMidYMid slice" />
-        <h3 >Lost Property</h3>
+        <img className="bd-placeholder-img rounded-circle CrimeImage" src="https://pandc.stanmorepublicschool.com.au/wp-content/uploads/2021/11/lost-and-found-lrg.jpeg" width="140" height="140"  />
+        <h3>Lost Property</h3>
+        </div>
+        
         <p className='CrimeInfo'>Property which cannot be located Does not include property that you think was taken from your possession. Example: forgetting a package on the subway</p>
-        <p><a className="btn btn-secondary" href="#">Regsiter</a></p>
-      </div>
+        <p className='Register' ><a className="btn btn-secondary" href="#">Regsiter</a></p>
+     
       </div>
       <div className="col-xl-3">
       <div className='center'>
-        <img className="bd-placeholder-img rounded-circle CrimeImage" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT7BfZwFBhVYvlma3FgJa6zDgX7BysQUghPDw&usqp=CAU" width="140" height="140" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder" preserveAspectRatio="xMidYMid slice"  style={{border:'1px'}}/>
-        <h2 className="fw-normal">Criminal Mischief</h2>
+        <img className="bd-placeholder-img rounded-circle CrimeImage" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT7BfZwFBhVYvlma3FgJa6zDgX7BysQUghPDw&usqp=CAU" width="140" height="140"/>
+        <h3>Criminal Mischief</h3>
        </div>
-       <div>
+       <div >
         <p className='CrimeInfo'>Intentional damage to property by a person Example:Intentionally breaking a car window</p>
-        <p ><a className="btn btn-secondary" href="#">Register</a></p>
+        <p className='Register'><a className="btn btn-secondary" href="#">Register</a></p>
         </div>
       </div>
       <div className="col-xl-3">
       <div className='center'>
-        <img className="bd-placeholder-img rounded-circle CrimeImage" src="https://thedefenders.net/wp-content/uploads/2023/06/man-inside-grocery-putting-something-in-jacket-pocket.jpeg"width="140" height="140" role="img" aria-label="Placeholder" preserveAspectRatio="xMidYMid slice" />
-        <h2 className="fw-normal">Petit Lacency</h2>
+        <img className="bd-placeholder-img rounded-circle CrimeImage" src="https://thedefenders.net/wp-content/uploads/2023/06/man-inside-grocery-putting-something-in-jacket-pocket.jpeg"width="140" height="140"  />
+        <h3 >Petit Lacency</h3>
         </div>
-        <div>
+        <div >
         <p className='CrimeInfo'>Property that was taken without permission valued at Rs.1000 or less. Does not include property that was forcibly taken from you.
           Example: Bike being stolen in front of a store</p>
-        <p ><a className="btn btn-secondary" href="#">Regsiter</a></p>
+        <p className='Register'><a className="btn btn-secondary" href="#">Register</a></p>
       </div>
       </div>
 
       <div className="col-xl-3">
         <div className='center'>
-        <img className="bd-placeholder-img rounded-circle CrimeImage" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR1nmmyasrAUuC7jOG_Co7gtIzP1npBR2zxlw&usqp=CAU"width="140" height="140" role="img" aria-label="Placeholder" preserveAspectRatio="xMidYMid slice" />
-        <h2 className="fw-normal">Graffeti</h2>
+        <img className="bd-placeholder-img rounded-circle CrimeImage" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR1nmmyasrAUuC7jOG_Co7gtIzP1npBR2zxlw&usqp=CAU"width="140" height="140"   />
+        <h3  style={{alignSelf:'center'}}>Graffeti</h3>
         </div>
         <div>
         <p className='CrimeInfo'>Intentionally drawing, scratching, or etching on property. Example: Spray painting a store front. If reporting graffiti, upload a picture of graffiti.</p>
-        <p ><a className="btn btn-secondary" href="#">Regsiter</a></p>
+        <p className='Register'><a className="btn btn-secondary" href="#">Register</a></p>
         </div>
       </div>
       </div>

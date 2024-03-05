@@ -2,7 +2,7 @@ import '../Css/Footer.css'
 export default function Footer()
 {
 return(
-    <div  className='FooterContainer'>
+    <div  className='FooterContainer mt-5'>
   <footer >
     <ul className="nav justify-content-center border-bottom  ">
       <li className="text"><a   className="nav-link px-2 text-body-secondary">Home</a></li>
