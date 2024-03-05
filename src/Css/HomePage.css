@@ -1,0 +1,44 @@
+.HomeImageContainer
+{
+    margin-top: 3.5%;
+    height: 70vh;  
+}
+
+
+.col-xl-3
+{
+    display: flex;
+    flex-direction: column;
+  
+    
+}
+
+center
+{
+  
+    align-self: center;
+}
+
+ .CrimeInfo
+ {
+    width:100%;
+  text-align: left;
+  align-content: center;
+
+
+ }
+
+ .row
+ {
+justify-content:center ;
+ }
+
+.CrimeImage{
+border: solid;
+
+}
+
+.About
+{
+    background-color: #50C4ED;
+}

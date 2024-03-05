@@ -1,0 +1,27 @@
+.button{
+    display:flex;
+    gap:12px;
+}
+
+.nav-background
+{
+background-color: #50C4ED;
+}
+
+.text
+{
+    color:black;
+    font-weight: bold;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+.items
+{
+    display: flex;
+   gap:20px;
+   align-self: center;
+}
+
+ul {
+    list-style-type: none;
+  }
