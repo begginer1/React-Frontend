@@ -3,14 +3,16 @@ import './App.css';
 import { Header } from './components/Header';
 import Footer from './components/Footer';
 import { HomePage } from './components/HomePage';
-import UserDashboard from './components/UserDashboard'
+import UserDashboard from './components/UserDashboard';
+import { IncidentTypeComponent } from './components/IncidentTypeComponent';
 function App() {
   return (
     <div >
       {/* <Header/> */}
     {/* <Footer/> */}
-     <HomePage/>
-   {/* <UserDashboard/> */}
+     {/* <HomePage/> */}
+   <UserDashboard/>
+   {/* <IncidentTypeComponent/> */}
     </div>
   );
 }

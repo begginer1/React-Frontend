@@ -1,0 +1,12 @@
+.card-footer button{
+    margin-right: 4px;
+    border: 0;
+}
+
+
+
+
+.card-body img{
+    border-radius: 50%;
+    width: 100px;
+}
