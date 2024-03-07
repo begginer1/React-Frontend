@@ -1,13 +1,12 @@
-import  {Header} from './Header' 
-import  Footer  from "./Footer"
+
 import '../Css/UserDashboard.css'
 import brandImage from '../images/brand.png'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faGauge,faHouse,faFile } from '@fortawesome/free-solid-svg-icons'
 import { IncidentTypeComponent } from './IncidentTypeComponent'
-import ProfileCard from './ProfileCard'
-import Table from './IncidentTable'
-export default function UserDashboard()
+import StationHeadProfile from './StationHeadProfile'
+import UserTable from './UserTable'
+export default function StationHeadDashboard()
 {
     return (
         <div >
@@ -26,14 +25,14 @@ export default function UserDashboard()
                 <p className ="text"style={{alignSelf:'center'}}>Dashboard</p>
             <div className="UserDetails">
             
-            <ProfileCard/>
+            <StationHeadProfile/>
            <IncidentTypeComponent/>
 
             </div>
             <div className='DashBoardTable'>
-            <Table/>
+            <UserTable/>
             <div style={{width:'100%',display:'flex',justifyContent:'center'}}>
-                <button className='btn btn-primary'>Report Incident</button>
+          
             </div>
             </div>
             </div>

@@ -1,0 +1,33 @@
+.IncidentType
+{
+   border:solid; 
+    height: 85%;
+    width: 50%;
+    border-radius: 10%;
+    margin-left: 10%;
+    display: flex;
+    align-self: center;
+
+}
+
+.IncidentType div{
+ 
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    width: 30%;
+    margin-left: 21%;
+}
+
+.IncidentType img{
+    border: solid;
+     margin-top: 12%;
+     margin-left: 12%;
+}
+
+.IncidentType h1{
+  color: #50C4ED;;
+    margin-bottom: 0%;
+   
+}
+

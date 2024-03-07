@@ -1,11 +1,11 @@
 import '../Css/ProfileCard.css'
-export default function ProfileCard(props)
+export default function OfficerProfileCard()
 {
 return(
     <div className='Profile'>
         <div className="card" style={{height:'100%'}}>
         <div className="card-header text-center" style={{backgroundColor:'#50C4ED'}}> 
-            <h6>User Detail</h6>
+            <h6>Officer Detail</h6>
             
         </div>
         <div className="card-body text-center" >
@@ -18,36 +18,21 @@ return(
         <div className="container">
         <span style={{display:'flex', justifyContent:'space-between'}}>
             <div ><p className='text'> 
-                AddharNo:
+                BadgeNo
             </p>
             <p>
                 12233434
             </p></div>
             <div >
                 <p className='text'>
-                PanNo:
+               Rank
             </p>
             <p>
-               FG12233434
+            Inspector
             </p></div>
         </span>
-        <span >
-            <div style={{display:'flex'}}><p className='text'>
-                Age:
-            </p>
-            <p>
-                12
-            </p></div>
-           
-        </span>
-        <div style={{display:'flex',justifyContent:'space-between'}}><p className='text'>
-                Address: 
-            </p>
-            <p>
-                12 Streetd
-            </p></div>
         </div>
-       
+        <div style={{backgroundColor:'#50C4ED', height:'10%'}}></div>
       </div>
          </div>
 )
