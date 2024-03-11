@@ -2,8 +2,12 @@ import brandImage from '../images/brand.png'
 import '../Css/HomePage.css'
 import { Header } from './Header';
 import Footer from './Footer';
+import { Link } from 'react-router-dom';
+import { createContext } from 'react';
+import { TokenContext } from './TokenContext';
 export function  HomePage()
-{
+{const TokenObj=createContext(TokenContext)
+  console.log(TokenObj.token)
     return (
       <div>
         <Header/>
@@ -19,7 +23,7 @@ export function  HomePage()
         </div>
         
         <p className='CrimeInfo'>Property which cannot be located Does not include property that you think was taken from your possession. Example: forgetting a package on the subway</p>
-        <p className='Register' ><a className="btn btn-secondary" href="#">Regsiter</a></p>
+        <p className='Register'><Link to='/LostProperty' className="btn btn-secondary">Register</Link></p>
      
       </div>
       <div className="col-xl-3">
@@ -29,7 +33,7 @@ export function  HomePage()
        </div>
        <div >
         <p className='CrimeInfo'>Intentional damage to property by a person Example:Intentionally breaking a car window</p>
-        <p className='Register'><a className="btn btn-secondary" href="#">Register</a></p>
+        <p className='Register'><Link to='/Mischief'className="btn btn-secondary" href="#">Register</Link></p>
         </div>
       </div>
       <div className="col-xl-3">
@@ -40,7 +44,7 @@ export function  HomePage()
         <div >
         <p className='CrimeInfo'>Property that was taken without permission valued at Rs.1000 or less. Does not include property that was forcibly taken from you.
           Example: Bike being stolen in front of a store</p>
-        <p className='Register'><a className="btn btn-secondary" href="#">Register</a></p>
+        <p className='Register'><Link to='/PetitLarency' className="btn btn-secondary">Register</Link></p>
       </div>
       </div>
 
@@ -51,7 +55,7 @@ export function  HomePage()
         </div>
         <div>
         <p className='CrimeInfo'>Intentionally drawing, scratching, or etching on property. Example: Spray painting a store front. If reporting graffiti, upload a picture of graffiti.</p>
-        <p className='Register'><a className="btn btn-secondary" href="#">Register</a></p>
+        <p className='Register'><Link to='/Graffeti' className="btn btn-secondary" href="#">Register</Link></p>
         </div>
       </div>
       </div>

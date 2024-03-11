@@ -17,7 +17,7 @@ export function IncidentTypeComponent(){
         </div>
         </div>
   
-        <div className="Block"></div>
+        {/* <div className="Block"></div> */}
         </div>
 )
 }

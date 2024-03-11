@@ -25,3 +25,12 @@ background-color: #50C4ED;
 ul {
     list-style-type: none;
   }
+
+  .HoverEffect:hover{
+    color:white;
+  }
+
+  .navbar a{
+    text-decoration: none;
+    color: #4F4D4D;
+  }

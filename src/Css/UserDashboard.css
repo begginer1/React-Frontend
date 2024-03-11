@@ -16,6 +16,7 @@ height: 100vh;
     border-color: #4F4D4D;
     background-color:  #50C4ED;
     padding-top: 4%;
+    
 }
 
 
@@ -28,6 +29,7 @@ height: 100vh;
     width: 100%;
     height: 20%;
     justify-content: space-between; 
+    align-items: center;
 }
 
 .UserDetails
@@ -111,4 +113,9 @@ height: 100vh;
 {
     background-color:#50C4ED;
     height:10%;
+}
+
+.SlideBarChild a
+{
+    color: black;
 }

@@ -1,11 +1,11 @@
+import { Link } from 'react-router-dom'
 import '../Css/Header.css'
 import brandImage from '../images/brand.png'
+
 export const Header=()=>
 {
-  function  optionHighlight()
-  {
-    
-  }
+  
+ 
     return(
      
     <header >
@@ -18,13 +18,13 @@ export const Header=()=>
       <div  className='items'>
         <ul className="items  mb-2 mb-md-0  mt-2 pb-2">
           <li className="text">
-            <a  name ='Home' onClick={optionHighlight} >Home</a>
+            <Link to='/Home' className="HoverEffect text"name ='Home'  >Home</Link>
           </li>
           <li className=" text">
-            <a  name='Register' onClick={optionHighlight} >Register a Crime</a>
+            <Link to='/' className="HoverEffect text" name='Register' >Register a Crime</Link>
           </li>
           <li className="text">
-            <a  name='About' onClick={optionHighlight} >About</a>
+            <Link to='/Dashboard' className="HoverEffect text">Dashboard</Link>
           </li>
 
         </ul>
@@ -32,10 +32,10 @@ export const Header=()=>
     
         <span className="button">
           <div>
-        <button className="btn btn-warning text">Login</button>
+        <button className="btn btn-warning text" ><Link to='/SignIn'>Login</Link></button>
         </div>
         <div>
-        <button className="btn btn-warning text">SignUp</button>
+        <button className="btn btn-warning text"  ><Link to='/SignUp'>SignUp</Link></button>
         </div>
       </span>
       </div> 

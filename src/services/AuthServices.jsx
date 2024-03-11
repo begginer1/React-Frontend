@@ -5,12 +5,12 @@ class AuthService
 
     Login(User)
     {
-        axios.post(BaseURL+'/login',User);
+        return axios.post(BaseURL+'/login',User);
     }
 
     Register(User)
     {
-        axios.post(BaseURL+'/register',User)
+        return axios.post(BaseURL+'/register',User)
     }
 }
 

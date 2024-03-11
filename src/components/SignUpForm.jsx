@@ -9,7 +9,8 @@ const SignUpForm = () => {
 
    const handleRegister=(e)=>
     {
-        e.preventDefault();
+      // console.log(e)
+        // e.preventDefault();
         const LoginData={'email':email,'name':name,'password':password,'username':username}
         console.log(LoginData)
         SignInServices.Register(LoginData) .then( (response)=> {
@@ -34,11 +35,11 @@ const SignUpForm = () => {
                   <input type="text" className="form-control"  placeholder="Enter your name" onChange={(e)=>{setName(e.target.value)}}/>
                 </div>
                 <div className="form-group mb-3">
-                  <label>UserName</label>
+                  <label>Username</label>
                   <input type="text" className="form-control" id="UserName" placeholder="Enter your UserName" onChange={(e)=>{setUsername(e.target.value)}} />
                 </div>
                 <div className="form-group mb-3">
-                  <label >Email address</label>
+                  <label >Email</label>
                   <input type="email" className="form-control" id="email" placeholder="Enter email" onChange={(e)=>setEmail(e.target.value)}/>
                 </div>
                 <div >

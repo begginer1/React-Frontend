@@ -7,6 +7,7 @@ import { faGauge,faHouse,faFile } from '@fortawesome/free-solid-svg-icons'
 import { IncidentTypeComponent } from './IncidentTypeComponent'
 import ProfileCard from './ProfileCard'
 import Table from './IncidentTable'
+import { Link } from 'react-router-dom'
 export default function UserDashboard()
 {
     return (
@@ -15,9 +16,9 @@ export default function UserDashboard()
             <div className="userPanel">
             <div className="SlideBar">
                 <div className="SlideBarChild ">
-                <FontAwesomeIcon icon={faGauge} onClick={()=>console.log("dashboard")}/> 
-                <FontAwesomeIcon icon={faHouse}  onClick={()=>console.log("Home")} />
-                <FontAwesomeIcon icon={faFile}  onClick={()=>console.log("Register")}/>          
+                <Link to="/Dashboard" ><FontAwesomeIcon icon={faGauge} /></Link>
+                <Link to="/Home" ><FontAwesomeIcon icon={faHouse}/></Link>
+                <Link to=""><FontAwesomeIcon icon={faFile}/> </Link>        
                 </div>
                 </div>
             
