@@ -9,18 +9,31 @@ import MyForm from './components/form';
 import Table from './components/IncidentTable';
 import OfficerDashboard from './components/OfficerDashboard';
 import StationHeadDashboard from './components/StationHeadDashboard';
+import SignInForm from './components/SignInForm'
+import SignUpForm from './components/SignUpForm'
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 function App() {
   return (
     <div >
+      {/* <BrowserRouter>
+      <Routes>
+          <Route path="/Home" index element={<HomePage />} />
+          {/* <Route path="/Register a Crime" element={<Blogs />} />
+          <Route path="contact" element={<Contact />} />
+          <Route path="*" element={<NoPage />} /> 
+      </Routes>
+      </BrowserRouter> */}
       {/* <Header/> */}
     {/* <Footer/> */}
      {/* <HomePage/> */}
    {/* <UserDashboard/> */}
    {/* <OfficerDashboard/> */}
-   <StationHeadDashboard/>
+   {/* <StationHeadDashboard/> */}
    {/* <Table/> */}
    {/* <MyForm/> */}
    {/* <IncidentTypeComponent/> */}
+   {/* <SignInForm/> */}
+   <SignUpForm/>
     </div>
   );
 }
