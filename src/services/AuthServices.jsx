@@ -3,7 +3,7 @@ const BaseURL='http://localhost:8082/api/authenticate'
 class AuthService
 {
 
-    Login(User)
+    async Login(User)
     {
         return axios.post(BaseURL+'/login',User);
     }

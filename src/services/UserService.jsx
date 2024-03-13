@@ -3,23 +3,48 @@ import axios from "axios"
 const BASE_REST_API_URL = "http://localhost:8082/api/v1/User/"
 
 class UserService {
-    generateReport(id) {
+    async generateReport(id) {
         return axios.get(BASE_REST_API_URL +"GenerateReport?inc_id="+id);
     }
-    addUser(user,TokenObj){
-        return  axios.post('http://localhost:8082/api/v1/User/CreateUser',user,
+   async addUser(user,TokenObj){
+        return  await axios.post(BASE_REST_API_URL+'CreateUser',user,
         {
             headers:{
-                Authorization:`Bearer ${TokenObj.token}`
+                // Authorization:`Bearer ${TokenObj.token}`
+                'Access-Control-Allow-Origin': '*',
+                Authorization:`Bearer eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiJzYWNoaW4xIiwicm9sZSI6IlJPTEVfVVNFUiIsImlhdCI6MTcxMDIyOTk0NiwiZXhwIjoxNzEwODM0NzQ2fQ.q--2Z2DkHrAW4iB97V7X1bJWIBZJw8A_cRTsfVr6AmnKQc2phuE3HbRSBmnXFa4e`
             }
         });
     }
-    getIdByEmail(TokenObj)
-    {
-        return axios.get(BASE_REST_API_URL+'getIdByEmail'+TokenObj.email,
+
+    async GenerateIncident(user_id,incidentObj,TokenObj){
+        return  await axios.post(BASE_REST_API_URL+'AddIncident/'+user_id,incidentObj,
         {
             headers:{
-             Authorization:`Bearer ${TokenObj.token}`
+                // Authorization:`Bearer ${TokenObj.token}`
+         
+                Authorization:`Bearer eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiJzYWNoaW4xIiwicm9sZSI6IlJPTEVfVVNFUiIsImlhdCI6MTcxMDIyOTk0NiwiZXhwIjoxNzEwODM0NzQ2fQ.q--2Z2DkHrAW4iB97V7X1bJWIBZJw8A_cRTsfVr6AmnKQc2phuE3HbRSBmnXFa4e`
+            }
+        });
+    }
+
+    async GetUser(user_id,TokenObj){
+        return  await axios.get(BASE_REST_API_URL+'GetUser/'+user_id,
+        {
+            headers:{
+                // Authorization:`Bearer ${TokenObj.token}`
+         
+                Authorization:`Bearer eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiJzYWNoaW4xIiwicm9sZSI6IlJPTEVfVVNFUiIsImlhdCI6MTcxMDIyOTk0NiwiZXhwIjoxNzEwODM0NzQ2fQ.q--2Z2DkHrAW4iB97V7X1bJWIBZJw8A_cRTsfVr6AmnKQc2phuE3HbRSBmnXFa4e`
+            }
+        });
+    }
+    async getIdByEmail(TokenObj)
+    {
+        console.log(TokenObj)
+        return axios.get(BASE_REST_API_URL+'getIdByEmail'+TokenObj.userDto.email,
+        {
+            headers:{
+             Authorization:`Bearer ${TokenObj.accessToken}`
             }
         });
     }

@@ -59,10 +59,9 @@ height: 100vh;
 }
 
 .DashBoardTable{
-    height: 20%;
-    width: 100%;
     margin-left: 3%;
     margin-top:3%;
+    overflow: auto;
 
 }
 

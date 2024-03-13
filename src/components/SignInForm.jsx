@@ -1,24 +1,28 @@
 import React, { useContext, useState } from 'react';
 import '../Css/SignInForm.css'
 import AuthServices from '../services/AuthServices';
-import { TokenContext } from './TokenContext';
+import { AuthContext } from './service/AuthProvider';
+import { Navigate, useNavigate } from 'react-router-dom';
 
 const SignInForm = () => {
-  const TokenObj=useContext(TokenContext);
+  const{auth,setAuth}=useContext(AuthContext)
   
   const [username,setUserName]=useState('');
     const [password,setPassword]=useState('');
+    const navigate=useNavigate()
   const  handleSubmit=async (e)=>
   {
     e.preventDefault()
     const LoginData={'userName':username,'password':password}
     console.log(LoginData)
-    await AuthServices.Login(LoginData).then((response)=>{
+      AuthServices.Login(LoginData).then((response)=>{
   //  console.log(response.data.accessToken)
-      TokenObj.setToken(response.data.accessToken)
-      TokenObj.setEmail(response.data.userDto.email)
-      TokenObj.setRole(response.data.userDto.role)
-      console.log(TokenObj)
+  console.log("auth1",auth)
+  const accessToken=response.data.accessToken;
+  const userDto=response.data.userDto
+      setAuth({accessToken,userDto})
+      console.log("auth",auth)
+      navigate('/register')
   })
     .catch((error)=>
     console.log(error))

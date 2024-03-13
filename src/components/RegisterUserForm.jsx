@@ -1,22 +1,22 @@
 import { createContext, useState } from 'react';
 import '../Css/RegisterUserForm.css'
 import UserService from '../services/UserService';
-import { TokenContext } from './TokenContext';
+import { AuthContext } from './service/AuthProvider';
 export const RegisterUserForm=()=>
 {
-    const TokenObj=createContext(TokenContext);
-    console.log(TokenObj.token)
+    const {auth,setAuth}=createContext(AuthContext);
+    console.log(auth)
     const[name,setName]=useState('');
     const[address,setAddress]=useState('');
     const[aadNo,setAadNo]=useState('');
     const[panNo,setPanNo]=useState('');
     const[dob,setDob]=useState('');
     const[email,setEmail]=useState('');
-    console.log(TokenObj.token)
+    
     const HandleUserRegister=(e)=>
     { 
         e.preventDefault()
-        console.log(TokenObj.token)
+        console.log(auth?.token)
         const UserData={"name": name,
         "aadharNumber": aadNo,
         "panNumber": panNo,
@@ -25,7 +25,7 @@ export const RegisterUserForm=()=>
         "email":email
     }
     console.log(UserData)
-        UserService.addUser(UserData,TokenObj).then((response)=>{
+        UserService.addUser(UserData,auth).then((response)=>{
             console.log(response)
         })
         .catch((error)=>{

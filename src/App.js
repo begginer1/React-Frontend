@@ -15,28 +15,34 @@ import StationHeadDashboard from './components/StationHeadDashboard';
 import SignInForm from './components/SignInForm'
 import SignUpForm from './components/SignUpForm'
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import { TokenContextProvider } from './components/TokenContext';
 import { RegisterUserForm } from './components/RegisterUserForm';
+import { TokenProvider } from './components/service/AuthProvider';
 
-function App() {
+function App() 
+{ 
   return (
-    <div >
-      <TokenContextProvider>
-      <BrowserRouter>
-      <Routes>
-          <Route path="/Home" index element={<HomePage />} />
-           {/* <Route path="/Register a Crime" element={<Blogs />} />  */}
-          <Route path="/SignUp" element={<SignUpForm />} />
-          <Route path="/SignIn" element={<SignInForm />} /> 
-          <Route path="/Dashboard" element={<StationHeadDashboard/>} /> 
+    <div>
+     
+   {/* <Routes> 
+    <Route path="/" element={<HomePage />} />
+   <Route path="/SignUp" element={<SignUpForm />} />
+          <Route path="/SignIn" index element={<SignInForm />} /> 
+          </Routes> */}
+         
+         
+         
+       <Routes>
+          <Route path="/home" element={<HomePage />} />   
+          <Route path="/Dashboard" element={<UserDashboard/>} /> 
           <Route path="/Mischief" element={<CriminalMischeifForm/>} /> 
           <Route path="/Graffeti" element={<GraffetiForm/>} /> 
           <Route path="/PetitLarency" element={<PetitLarencyForm/>} /> 
           <Route path="/LostProperty" element={<LostPropertyForm/>} /> 
           <Route path="/RegisterUser"element={<RegisterUserForm/>}/>
-      </Routes>
-      </BrowserRouter>
-      
+          <Route path="*" element={<SignInForm/>}/>
+      </Routes> 
+     
+
     
    {/* <OfficerDashboard/> */}
    {/* <StationHeadDashboard/> */}
@@ -45,9 +51,10 @@ function App() {
    {/* <IncidentTypeComponent/> */}
    {/* <SignInForm/> */}
    {/* <CriminalMischeifForm/> */}
-   </TokenContextProvider>
+   
   
    {/* <SignUpForm/> */}
+
     </div>
   );
 }

@@ -3,11 +3,17 @@ import '../Css/HomePage.css'
 import { Header } from './Header';
 import Footer from './Footer';
 import { Link } from 'react-router-dom';
-import { createContext } from 'react';
-import { TokenContext } from './TokenContext';
+import { createContext, useContext, useEffect } from 'react';
+import { AuthContext } from './service/AuthProvider';
 export function  HomePage()
-{const TokenObj=createContext(TokenContext)
-  console.log(TokenObj.token)
+{
+  const {auth,setAuth}=useContext(AuthContext)
+  useEffect(()=>{
+   if(auth!=null){
+   console.log("logged in")
+   console.log(auth)
+  }
+  },[auth])
     return (
       <div>
         <Header/>

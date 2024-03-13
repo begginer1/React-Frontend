@@ -8,8 +8,29 @@ import { IncidentTypeComponent } from './IncidentTypeComponent'
 import ProfileCard from './ProfileCard'
 import Table from './IncidentTable'
 import { Link } from 'react-router-dom'
+import { createContext, useContext, useEffect, useState } from 'react'
+import { AuthContext} from './service/AuthProvider'
+import UserService from '../services/UserService'
+import IncidentTable from './IncidentTable'
 export default function UserDashboard()
+{const [auth,setAuth]= createContext(AuthContext)
+console.log("token",auth?.token)
+const [userObj,setUserObj]=useState({})
+const[userId,SetUserId]=useState(1)
+//    console.log(TokenObj.token)
+useEffect(()=>
 {
+    
+UserService.GetUser(userId,"").then((response)=>{
+    console.log(response.data)
+    setUserObj(response.data)
+})
+.catch((error)=>{
+console.log(error)
+})
+},[])
+  
+   
     return (
         <div >
             
@@ -27,15 +48,15 @@ export default function UserDashboard()
                 <p className ="text"style={{alignSelf:'center'}}>Dashboard</p>
             <div className="UserDetails">
             
-            <ProfileCard/>
-           <IncidentTypeComponent/>
+            <ProfileCard value={userObj}/>
+           <IncidentTypeComponent />
 
             </div>
-            <div className='DashBoardTable'>
-            <Table/>
-            <div style={{width:'100%',display:'flex',justifyContent:'center'}}>
+            <div className='DashBoardTable' >
+            <IncidentTable  value={userObj}/>
+            {/* <div style={{width:'100%',display:'flex',justifyContent:'center'}}>
                 <button className='btn btn-primary'>Report Incident</button>
-            </div>
+            </div> */}
             </div>
             </div>
             </div>
