@@ -17,12 +17,12 @@ const SignInForm = () => {
     console.log(LoginData)
       AuthServices.Login(LoginData).then((response)=>{
   //  console.log(response.data.accessToken)
-  console.log("auth1",auth)
+ 
   const accessToken=response.data.accessToken;
   const userDto=response.data.userDto
       setAuth({accessToken,userDto})
-      console.log("auth",auth)
-      navigate('/register')
+      // console.log("auth",auth)
+      navigate('/dashboard')
   })
     .catch((error)=>
     console.log(error))

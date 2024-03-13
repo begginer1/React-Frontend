@@ -1,7 +1,7 @@
 import React from 'react';
 import '../Css/Table.css'
 const IncidentTable = (props) => {
-  console.log(props.value.incident)
+  // console.log(props.value.incident)
 
   const deleteEvent=()=>{
 

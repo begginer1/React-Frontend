@@ -40,10 +40,13 @@ class UserService {
     }
     async getIdByEmail(TokenObj)
     {
-        console.log(TokenObj)
-        return axios.get(BASE_REST_API_URL+'getIdByEmail'+TokenObj.userDto.email,
+       
+        return axios.get(BASE_REST_API_URL+'GetIdByEmail/'+TokenObj.userDto.email,
         {
             headers:{
+                'Access-Control-Allow-Origin': '*',
+            'Access-Control-Allow-Methods':'GET,PUT,POST,DELETE',
+            'Access-Control-Allow-Credentials':true,
              Authorization:`Bearer ${TokenObj.accessToken}`
             }
         });

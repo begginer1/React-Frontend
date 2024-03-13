@@ -17,6 +17,7 @@ import SignUpForm from './components/SignUpForm'
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { RegisterUserForm } from './components/RegisterUserForm';
 import { TokenProvider } from './components/service/AuthProvider';
+import { Dashboard } from './components/DashBoard';
 
 function App() 
 { 
@@ -33,7 +34,9 @@ function App()
          
        <Routes>
           <Route path="/home" element={<HomePage />} />   
-          <Route path="/Dashboard" element={<UserDashboard/>} /> 
+          <Route path="/Dashboard" element={<Dashboard/>} /> 
+          <Route path="/UserDashboard" element={<UserDashboard/>} /> 
+          <Route path="/OfficerDashboard" element={<OfficerDashboard/>} /> 
           <Route path="/Mischief" element={<CriminalMischeifForm/>} /> 
           <Route path="/Graffeti" element={<GraffetiForm/>} /> 
           <Route path="/PetitLarency" element={<PetitLarencyForm/>} /> 

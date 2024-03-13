@@ -1,11 +1,11 @@
-import { createContext, useState } from 'react';
+import { createContext, useContext, useState } from 'react';
 import '../Css/RegisterUserForm.css'
 import UserService from '../services/UserService';
 import { AuthContext } from './service/AuthProvider';
 export const RegisterUserForm=()=>
 {
-    const {auth,setAuth}=createContext(AuthContext);
-    console.log(auth)
+    const {auth,setAuth}=useContext(AuthContext);
+    console.log("auth",auth)
     const[name,setName]=useState('');
     const[address,setAddress]=useState('');
     const[aadNo,setAadNo]=useState('');

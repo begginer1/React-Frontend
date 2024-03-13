@@ -5,7 +5,13 @@ class AuthService
 
     async Login(User)
     {
-        return axios.post(BaseURL+'/login',User);
+        
+        return axios.post(BaseURL+'/login',User,
+        {headers:{
+            'Access-Control-Allow-Origin': '*',
+        'Access-Control-Allow-Methods':'GET,PUT,POST,DELETE,PATCH,OPTIONS'
+        }
+    })
     }
 
     Register(User)

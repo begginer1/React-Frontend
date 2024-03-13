@@ -12,17 +12,18 @@ import { createContext, useContext, useEffect, useState } from 'react'
 import { AuthContext} from './service/AuthProvider'
 import UserService from '../services/UserService'
 import IncidentTable from './IncidentTable'
-export default function UserDashboard()
-{const [auth,setAuth]= createContext(AuthContext)
-console.log("token",auth?.token)
+ function UserDashboard(){const {auth,setAuth}= useContext(AuthContext)
+console.log("token",auth)
 const [userObj,setUserObj]=useState({})
-const[userId,SetUserId]=useState(1)
+
+// const[userId,SetUserId]=useState(1)
 //    console.log(TokenObj.token)
+const {userId}=useContext(AuthContext)
 useEffect(()=>
 {
     
 UserService.GetUser(userId,"").then((response)=>{
-    console.log(response.data)
+    // console.log(response.data)
     setUserObj(response.data)
 })
 .catch((error)=>{
@@ -65,3 +66,5 @@ console.log(error)
     )
 
 }
+
+export default UserDashboard
