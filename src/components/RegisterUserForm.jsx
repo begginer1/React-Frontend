@@ -2,9 +2,10 @@ import { createContext, useContext, useState } from 'react';
 import '../Css/RegisterUserForm.css'
 import UserService from '../services/UserService';
 import { AuthContext } from './service/AuthProvider';
+import { useNavigate } from 'react-router-dom';
 export const RegisterUserForm=()=>
 {
-    const {auth,setAuth}=useContext(AuthContext);
+    const {auth,userId,setUserId}=useContext(AuthContext);
     console.log("auth",auth)
     const[name,setName]=useState('');
     const[address,setAddress]=useState('');
@@ -12,7 +13,7 @@ export const RegisterUserForm=()=>
     const[panNo,setPanNo]=useState('');
     const[dob,setDob]=useState('');
     const[email,setEmail]=useState('');
-    
+    const navigate=useNavigate()
     const HandleUserRegister=(e)=>
     { 
         e.preventDefault()
@@ -26,7 +27,10 @@ export const RegisterUserForm=()=>
     }
     console.log(UserData)
         UserService.addUser(UserData,auth).then((response)=>{
-            console.log(response)
+            console.log(response.data)
+            setUserId(response.data.id)
+            console.log("userId",userId)
+            navigate('/UserDashboard')
         })
         .catch((error)=>{
             console.log(error)

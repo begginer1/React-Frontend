@@ -6,7 +6,7 @@ const AuthProvider = ({children}) => {
     const [userId,setUserId]=useState(0);
    
   return ( 
-    <AuthContext.Provider value={{auth,setAuth,userId,setUserId} }> {console.log("auth",auth)} {children}</AuthContext.Provider>
+    <AuthContext.Provider value={{auth,setAuth,userId,setUserId} }>  {children}</AuthContext.Provider>
   )
 }
 export default AuthProvider;

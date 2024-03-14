@@ -1,13 +1,24 @@
 
 import '../Css/UserDashboard.css'
-import brandImage from '../images/brand.png'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faGauge,faHouse,faFile } from '@fortawesome/free-solid-svg-icons'
-import { IncidentTypeComponent } from './IncidentTypeComponent'
 import StationHeadProfile from './StationHeadProfile'
 import UserTable from './UserTable'
+import { useContext, useEffect } from 'react'
+import { AuthContext } from './service/AuthProvider'
+import IncidentTable from './IncidentTable'
+import StationHeadService from '../services/StationHeadService'
 export default function StationHeadDashboard()
-{
+{ const {auth} =useContext(AuthContext)
+console.log(auth)
+
+useEffect(()=>{
+StationHeadService.getAllIncident(auth).then((response)=>{
+        console.log(response.data)
+    })
+    .catch(error=>console.log(error)
+)
+},[])
     return (
         <div >
             
@@ -25,16 +36,21 @@ export default function StationHeadDashboard()
                 <p className ="text"style={{alignSelf:'center'}}>Dashboard</p>
             <div className="UserDetails">
             
-            <StationHeadProfile/>
-           <IncidentTypeComponent/>
-
+            <StationHeadProfile value={auth?.userDto}/>
+           {/* <IncidentTypeComponent/> */}
+           <div style={{display:'flex',flexDirection:'column', justifyContent:'space-between'}}>
+           <div className="Block"/>
+           {/* <IncidentTable/> */}
+           <div className="Block" ></div>
+           </div>
+          
             </div>
-            <div className='DashBoardTable'>
+            {/* <div className='DashBoardTable'>
             <UserTable/>
             <div style={{width:'100%',display:'flex',justifyContent:'center'}}>
           
             </div>
-            </div>
+            </div> */}
             </div>
             </div>
 

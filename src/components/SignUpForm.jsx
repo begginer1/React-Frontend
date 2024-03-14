@@ -1,17 +1,26 @@
 import React, { useState } from 'react';
 import SignInServices from '../services/AuthServices';
+import { useNavigate } from 'react-router-dom';
+import 'bootstrap/dist/css/bootstrap.min.css'
 
 const SignUpForm = () => {
     const [username,setUsername]=useState('');
     const [email,setEmail]=useState('');
     const [password,setPassword]=useState('');
     const [name,setName]=useState('');
+  const navigate =useNavigate()
+  const [selectedOption, setSelectedOption] = useState('');
 
+    // Function to handle the change in the dropdown selection
+    const handleDropdownChange = (event) => {
+      console.log(event.target.value)
+        setSelectedOption(event.target.value);
+    };
    const handleRegister=(e)=>
     {
       // console.log(e)
-        // e.preventDefault();
-        const LoginData={'email':email,'name':name,'password':password,'username':username}
+       
+        const LoginData={'email':email,'name':name,'password':password,'username':username,roles:[selectedOption]}
         console.log(LoginData)
         SignInServices.Register(LoginData) .then( (response)=> {
             console.log(response);
@@ -20,6 +29,7 @@ const SignUpForm = () => {
             console.log(error);
           })
           console.log(LoginData)
+          navigate('/SignIn')
     }
   return (
     <div className='UserLoginForm'>
@@ -46,6 +56,14 @@ const SignUpForm = () => {
                   <label htmlFor="password">Password</label>
                   <input type="password" className="form-control" id="password" placeholder="Password" onChange={(e)=>setPassword(e.target.value)}/>
                 </div>
+                <div className="mt-4">
+                <label>Role</label>
+            <select className="ml-3" value={selectedOption} onChange={handleDropdownChange} style={{marginLeft:'3%'}}>
+              <option value="ROLE_USER">User</option>
+              <option value="ROLE_OFFICER">Officer</option>
+              <option value="ROLE_STATION_HEAD">Station Head</option>
+            </select>
+              </div>
                 <div style={{display:'flex',justifyContent:'center',marginTop:'2%'}}>
                 <button type="submit" className="btn btn-primary btn-block mx-4" onClick={handleRegister}>Register</button>
                 <button type="submit" className="btn btn-danger btn-block">Cancel</button>

@@ -1,12 +1,16 @@
-import { useState } from 'react'
+import { useContext, useState } from 'react'
 import '../Css/RegisterUserForm.css'
 import UserService from '../services/UserService'
+import { useNavigate } from 'react-router-dom'
+import { AuthContext } from './service/AuthProvider'
 export const GraffetiForm=()=>
 {const [incidentDate ,SetIncidentDate]=useState('')
 const [description, SetDescription]=useState('')
 const[imageUrl,SetimageUrl]=useState('')
 const [location ,SetLocation]=useState('')
-
+const navigate=useNavigate()
+const {auth,userId}=useContext(AuthContext)
+console.log(auth);
 const handleSubmit=(e)=>
 {
     e.preventDefault()
@@ -16,9 +20,10 @@ const handleSubmit=(e)=>
     "description":description,
     "location": location};
     console.log(incidentObj);
-    UserService.GenerateIncident(1,incidentObj,"").then((response)=>
+    UserService.GenerateIncident(userId,incidentObj,auth).then((response)=>
     {
         console.log(response)
+        navigate('/UserDashboard')
     })
     .catch((error)=>{
         console.log(error);

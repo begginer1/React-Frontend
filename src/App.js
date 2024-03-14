@@ -18,7 +18,7 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { RegisterUserForm } from './components/RegisterUserForm';
 import { TokenProvider } from './components/service/AuthProvider';
 import { Dashboard } from './components/DashBoard';
-
+import {RegisterOfficerForm} from "./components/RegisterOfficerForm"
 function App() 
 { 
   return (
@@ -26,7 +26,7 @@ function App()
      
    {/* <Routes> 
     <Route path="/" element={<HomePage />} />
-   <Route path="/SignUp" element={<SignUpForm />} />
+   
           <Route path="/SignIn" index element={<SignInForm />} /> 
           </Routes> */}
          
@@ -37,12 +37,15 @@ function App()
           <Route path="/Dashboard" element={<Dashboard/>} /> 
           <Route path="/UserDashboard" element={<UserDashboard/>} /> 
           <Route path="/OfficerDashboard" element={<OfficerDashboard/>} /> 
+          <Route path="/SationHeadDashboard" element={<StationHeadDashboard/>} /> 
           <Route path="/Mischief" element={<CriminalMischeifForm/>} /> 
           <Route path="/Graffeti" element={<GraffetiForm/>} /> 
           <Route path="/PetitLarency" element={<PetitLarencyForm/>} /> 
           <Route path="/LostProperty" element={<LostPropertyForm/>} /> 
           <Route path="/RegisterUser"element={<RegisterUserForm/>}/>
+          <Route path="/RegisterOfficerForm"element={<RegisterOfficerForm/>}/>
           <Route path="*" element={<SignInForm/>}/>
+          <Route path="/SignUp" element={<SignUpForm />} />
       </Routes> 
      
 

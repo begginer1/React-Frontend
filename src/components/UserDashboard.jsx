@@ -12,17 +12,20 @@ import { createContext, useContext, useEffect, useState } from 'react'
 import { AuthContext} from './service/AuthProvider'
 import UserService from '../services/UserService'
 import IncidentTable from './IncidentTable'
- function UserDashboard(){const {auth,setAuth}= useContext(AuthContext)
+ function UserDashboard(){
+
+    const {auth,setAuth}= useContext(AuthContext)
 console.log("token",auth)
 const [userObj,setUserObj]=useState({})
 
 // const[userId,SetUserId]=useState(1)
 //    console.log(TokenObj.token)
 const {userId}=useContext(AuthContext)
+// console.log("auth",userId)
 useEffect(()=>
 {
     
-UserService.GetUser(userId,"").then((response)=>{
+UserService.GetUser(userId,auth).then((response)=>{
     // console.log(response.data)
     setUserObj(response.data)
 })
@@ -30,6 +33,7 @@ UserService.GetUser(userId,"").then((response)=>{
 console.log(error)
 })
 },[])
+
   
    
     return (
@@ -50,14 +54,14 @@ console.log(error)
             <div className="UserDetails">
             
             <ProfileCard value={userObj}/>
-           <IncidentTypeComponent />
+           <IncidentTypeComponent value={userId}/>
 
             </div>
             <div className='DashBoardTable' >
             <IncidentTable  value={userObj}/>
-            {/* <div style={{width:'100%',display:'flex',justifyContent:'center'}}>
-                <button className='btn btn-primary'>Report Incident</button>
-            </div> */}
+            <div style={{width:'100%',display:'flex',justifyContent:'center'}}>
+                <Link to="/home"><button className='btn btn-primary'>Report Incident</button></Link>
+            </div>
             </div>
             </div>
             </div>

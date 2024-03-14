@@ -1,10 +1,21 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import '../Css/Table.css'
+import IncidentService from '../services/IncidentService';
+import { AuthContext } from './service/AuthProvider';
+import { useNavigate } from 'react-router-dom';
 const IncidentTable = (props) => {
   // console.log(props.value.incident)
+  const {auth}=useContext(AuthContext)
 
-  const deleteEvent=()=>{
-
+  
+console.log(auth)
+  const deleteEvent=(incidentId)=>{
+    IncidentService.deleteIncident(incidentId,auth).then((response)=>{
+    })
+    .catch((error)=>
+    {
+      console.log(error)
+    })
   }
   return (
     <table className="table table-striped table-hover" >
