@@ -6,8 +6,39 @@ import { faGauge,faHouse,faFile } from '@fortawesome/free-solid-svg-icons'
 import { IncidentTypeComponent } from './IncidentTypeComponent'
 import OfficerProfileCard from './OfficerProfileCard'
 import Table from './IncidentTable'
+import { useContext, useEffect, useState } from 'react'
+import { AuthContext } from './service/AuthProvider'
+import OfficerService from '../services/OfficerService'
+import IncidentTable from './IncidentTable'
+
 export default function OfficerDashboard()
 {
+    const {auth,userId}=useContext(AuthContext)
+    const [officerObj,setOfficerObj]= useState({})
+    const [incident,setIncident]=useState([])
+    console.log(userId)
+    useEffect(()=>
+{
+    
+    OfficerService.getOfficerByEmail(auth).then((response)=>{
+    setOfficerObj(response.data)
+})
+.catch((error)=>{
+console.log(error)
+})
+},[])
+
+useEffect(()=>
+{
+    
+    OfficerService.IncidentOfOfficer(userId,auth).then((response)=>{
+    console.log(response.data)
+        setIncident(response.data)
+})
+.catch((error)=>{
+console.log(error)
+})
+},[])
     return (
         <div >
             
@@ -25,12 +56,12 @@ export default function OfficerDashboard()
                 <p className ="text"style={{alignSelf:'center'}}>Dashboard</p>
             <div className="UserDetails">
             
-            <OfficerProfileCard/>
+            <OfficerProfileCard value={officerObj}/>
            <IncidentTypeComponent/>
 
             </div>
             <div className='DashBoardTable'>
-            <Table/>
+            <IncidentTable value={incident}/>
             <div style={{width:'100%',display:'flex',justifyContent:'center'}}>
           
             </div>

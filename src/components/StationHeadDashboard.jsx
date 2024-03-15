@@ -3,7 +3,7 @@ import '../Css/UserDashboard.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faGauge,faHouse,faFile } from '@fortawesome/free-solid-svg-icons'
 import StationHeadProfile from './StationHeadProfile'
-import UserTable from './UserTable'
+import OfficerTable from './OfficerTable'
 import { useContext, useEffect } from 'react'
 import { AuthContext } from './service/AuthProvider'
 import IncidentTable from './IncidentTable'
@@ -45,12 +45,12 @@ StationHeadService.getAllIncident(auth).then((response)=>{
            </div>
           
             </div>
-            {/* <div className='DashBoardTable'>
-            <UserTable/>
+            <div className='DashBoardTable'>
+            <OfficerTable/>
             <div style={{width:'100%',display:'flex',justifyContent:'center'}}>
           
             </div>
-            </div> */}
+            </div>
             </div>
             </div>
 

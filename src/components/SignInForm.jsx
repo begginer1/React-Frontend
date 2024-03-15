@@ -6,7 +6,7 @@ import { Navigate, useNavigate } from 'react-router-dom';
 
 const SignInForm = () => {
   const{auth,setAuth}=useContext(AuthContext)
-  
+  console.log("signIn",auth)
   const [username,setUserName]=useState('');
     const [password,setPassword]=useState('');
     const navigate=useNavigate()

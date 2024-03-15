@@ -8,6 +8,7 @@ import { AuthContext } from './service/AuthProvider';
 export function  HomePage()
 {
   const {auth,setAuth}=useContext(AuthContext)
+  console.log("Homepage",auth)
   useEffect(()=>{
    if(auth!=null){
    console.log("logged in")
@@ -28,7 +29,7 @@ export function  HomePage()
         <h3>Lost Property</h3>
         </div>
         
-        <p className='CrimeInfo'>Property which cannot be located Does not include property that you think was taken from your possession. Example: forgetting a package on the subway</p>
+        <p className='CrimeInfo'>Property Which Cannot Be Located Does Not Include Property That You Think Was Taken From Your Possession. Example: Forgetting a Package On The Subway</p>
         <p className='Register'><Link to='/LostProperty' className="btn btn-secondary">Register</Link></p>
      
       </div>
@@ -38,8 +39,8 @@ export function  HomePage()
         <h3>Criminal Mischief</h3>
        </div>
        <div >
-        <p className='CrimeInfo'>Intentional damage to property by a person Example:Intentionally breaking a car window</p>
-        <p className='Register'><Link to='/Mischief'className="btn btn-secondary" href="#">Register</Link></p>
+        <p className='CrimeInfo'>Intentional Damage To Property By A Person Example:Intentionally Breaking A Car Window Purposely OR Recklessly Causes Another To Suffer Pecuniary Loss By Deception OR Threat.</p>
+        <p className='Register  '><Link to='/Mischief'className="btn btn-secondary" href="#">Register</Link></p>
         </div>
       </div>
       <div className="col-xl-3">
@@ -48,8 +49,8 @@ export function  HomePage()
         <h3 >Petit Lacency</h3>
         </div>
         <div >
-        <p className='CrimeInfo'>Property that was taken without permission valued at Rs.1000 or less. Does not include property that was forcibly taken from you.
-          Example: Bike being stolen in front of a store</p>
+        <p className='CrimeInfo'>Property That Was Taken Without Permission Valued at Rs.1000 OR Less. Does Not Include Property That Was Forcibly Taken From You.
+          Example: Bike being stolen IN front OF A store</p>
         <p className='Register'><Link to='/PetitLarency' className="btn btn-secondary">Register</Link></p>
       </div>
       </div>
@@ -60,7 +61,7 @@ export function  HomePage()
         <h3  style={{alignSelf:'center'}}>Graffeti</h3>
         </div>
         <div>
-        <p className='CrimeInfo'>Intentionally drawing, scratching, or etching on property. Example: Spray painting a store front. If reporting graffiti, upload a picture of graffiti.</p>
+        <p className='CrimeInfo'>Intentionally Drawing, Scratching, OR Etching ON Property. Example: Spray Painting A Store Front. If Reporting Graffiti, Upload A Picture OF Person Performing Graffiti</p>
         <p className='Register'><Link to='/Graffeti' className="btn btn-secondary" href="#">Register</Link></p>
         </div>
       </div>
@@ -72,7 +73,7 @@ export function  HomePage()
     <h1 className="display-5 fw-bold text-body-emphasis">About</h1>
     <div className="col-lg-6 mx-auto">
       <p className="lead mb-4">Crime Management System (CMS) for a law
-enforcement agency. The system should facilitate efficient management, tracking, and analysis of criminal
+enforcement agency. This system  facilitate efficient management, tracking, and analysis of criminal
 activities</p>
       <div className="d-grid gap-2 d-sm-flex justify-content-sm-center">
       </div>

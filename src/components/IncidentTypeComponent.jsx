@@ -10,7 +10,7 @@ export function IncidentTypeComponent(){
     const [caseNoLP,setCaseNoLp]=useState(0)
     const {userId,auth}=useContext(AuthContext)
     console.log("auth",auth)
-   const getNoOfCase=(incidentType)=>{
+   const getNumberOfCase=(incidentType)=>{
         IncidentService.getNoIncident(userId,auth,incidentType).then((response)=>
         {
             console.log(response.data)
@@ -29,11 +29,39 @@ export function IncidentTypeComponent(){
     })
     }
 
+    const getNumberForAssignOfCase=(incidentType)=>{
+        IncidentService.OfficerAssignIncidentNumber(userId,auth,incidentType).then((response)=>
+        {
+            console.log(response.data)
+            if(incidentType==="Graffeti")
+            setCaseNoGr(response.data)
+            else if(incidentType==="Criminal Mischief")
+            setCaseNoCm(response.data)
+            else if(incidentType==="Petit Larceny")
+            setCaseNoPl(response.data)
+            else if(incidentType==="Lost Property")
+            setCaseNoLp(response.data)
+    })
+    .catch((error)=>
+    {
+        console.log(error)
+    })
+    }
+
     useEffect(()=>{
-        getNoOfCase("Graffeti")  
-        getNoOfCase("Criminal Mischief") 
-        getNoOfCase("Lost Property") 
-        getNoOfCase("Petit Larceny") 
+        if(auth.userDto.role==="ROLE_USER"){
+        getNumberOfCase("Graffeti")  
+        getNumberOfCase("Criminal Mischief") 
+        getNumberOfCase("Lost Property") 
+        getNumberOfCase("Petit Larceny") 
+        }
+        else (auth.userDto.role==="ROLE_OFFICER")
+        {
+            getNumberForAssignOfCase("Graffeti") 
+            getNumberForAssignOfCase("Criminal Mischief") 
+            getNumberForAssignOfCase("Lost Property") 
+            getNumberForAssignOfCase ("Petit Larceny") 
+        }
     },[])
     return(
         <div style={{width:'100%'}}>

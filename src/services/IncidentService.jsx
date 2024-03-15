@@ -31,5 +31,21 @@ class IncidentService {
             }
         });
     }
+
+    async OfficerAssignIncidentNumber(officerId,incidentType,TokenObj)
+    {
+ 
+       
+        return axios.get(BASE_REST_API_URL+'GetOfficerAssignIncidentNo/'+officerId+"/"+JSON.stringify(incidentType),
+        {
+            headers:{
+                'Access-Control-Allow-Origin': '*',
+            'Access-Control-Allow-Methods':'GET,PUT,POST,DELETE',
+            'Access-Control-Allow-Credentials':true,
+             Authorization:`Bearer ${TokenObj.accessToken}`
+            }
+        });
+    }
+
 }
 export default new IncidentService()
