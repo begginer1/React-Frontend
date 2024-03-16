@@ -32,11 +32,11 @@ class IncidentService {
         });
     }
 
-    async OfficerAssignIncidentNumber(officerId,incidentType,TokenObj)
+    async OfficerAssignIncidentNumber(officerId,TokenObj,incidentType)
     {
  
-       
-        return axios.get(BASE_REST_API_URL+'GetOfficerAssignIncidentNo/'+officerId+"/"+JSON.stringify(incidentType),
+     
+        return axios.get(BASE_REST_API_URL+'GetOfficerAssignIncidentNo?officerId='+officerId+"&incidentType="+incidentType,
         {
             headers:{
                 'Access-Control-Allow-Origin': '*',

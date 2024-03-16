@@ -3,9 +3,9 @@ import '../Css/ProfileCard.css'
 export default function StationHeadCard(props)
 {
 return(
-    <div className='Profile'>
+    <div className='Profile' style={{width:'40%'}} >
         <div className="card" style={{height:'100%'}}>
-        <div className="card-header text-center" style={{backgroundColor:'#50C4ED'}}> 
+        <div className="card-header text-center" style={{backgroundColor:'#50C4ED' }}> 
             <h6>Station Head Detail</h6>
             
         </div>
@@ -17,7 +17,7 @@ return(
           <p className='text'> ADMIN</p></span>
         </div>
 
-        <span style={{height:'40%',alignSelf:'center'}}>
+        <span style={{height:'40%',alignSelf:'center', marginBottom:'3%'}}>
           <Link to="/RegisterOfficerForm" ><button className='btn btn-primary'>Register Officer</button></Link>
         </span>
         <div style={{backgroundColor:'#50C4ED', height:'18%'}}></div>

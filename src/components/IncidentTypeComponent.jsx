@@ -9,7 +9,8 @@ export function IncidentTypeComponent(){
     const [caseNoGR,setCaseNoGr]=useState(0)
     const [caseNoLP,setCaseNoLp]=useState(0)
     const {userId,auth}=useContext(AuthContext)
-    console.log("auth",auth)
+    
+       
    const getNumberOfCase=(incidentType)=>{
         IncidentService.getNoIncident(userId,auth,incidentType).then((response)=>
         {
@@ -32,7 +33,7 @@ export function IncidentTypeComponent(){
     const getNumberForAssignOfCase=(incidentType)=>{
         IncidentService.OfficerAssignIncidentNumber(userId,auth,incidentType).then((response)=>
         {
-            console.log(response.data)
+            console.log(response)
             if(incidentType==="Graffeti")
             setCaseNoGr(response.data)
             else if(incidentType==="Criminal Mischief")
@@ -55,7 +56,7 @@ export function IncidentTypeComponent(){
         getNumberOfCase("Lost Property") 
         getNumberOfCase("Petit Larceny") 
         }
-        else (auth.userDto.role==="ROLE_OFFICER")
+        else if(auth.userDto.role==="ROLE_OFFICER")
         {
             getNumberForAssignOfCase("Graffeti") 
             getNumberForAssignOfCase("Criminal Mischief") 

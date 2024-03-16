@@ -19,6 +19,7 @@ import { RegisterUserForm } from './components/RegisterUserForm';
 import { TokenProvider } from './components/service/AuthProvider';
 import { Dashboard } from './components/DashBoard';
 import {RegisterOfficerForm} from "./components/RegisterOfficerForm"
+import {AssignOfficer} from "./components/AssignOfficer"
 function App() 
 { 
   return (
@@ -46,6 +47,7 @@ function App()
           <Route path="/RegisterOfficerForm"element={<RegisterOfficerForm/>}/>
           <Route path="SignIn" element={<SignInForm/>}/>
           <Route path="/SignUp" element={<SignUpForm />} />
+          <Route path="/AssignOfficer" element={<AssignOfficer/>} />
       </Routes> 
      
 

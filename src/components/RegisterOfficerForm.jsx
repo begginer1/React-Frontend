@@ -2,7 +2,8 @@ import { useContext, useState } from 'react'
 import '../Css/RegisterUserForm.css'
 import { AuthContext } from './service/AuthProvider'
 import StationHeadService from '../services/StationHeadService'
-import { useNavigate } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
+import { Button } from 'bootstrap'
 export const RegisterOfficerForm=()=>
 { const [name,setName]=useState('')
 const [email,setEmail]=useState('')
@@ -17,7 +18,7 @@ const [badgeNo,setBadgeNo]=useState('')
         "rank":rank,
         "email":email}
         StationHeadService.RegisterOfficer(officer,auth).then((response)=>{
-        navigate('/SationHeadDashboard')
+        navigate('/dashboard')
     })
         .catch(error=>console.log(error))
     }
@@ -42,9 +43,9 @@ const [badgeNo,setBadgeNo]=useState('')
             <br/>
             <input type="email"placeholder=" Email Address" onChange={(e)=>setEmail(e.target.value)} />
            <br/><br/>
-            <span style={{'display':'flex',justifyContent:'center',backgroundColor:'green'}}>
-           <input className="btn btn-primary" type="submit" onClick={handleSubmit}/>
-           <input className="btn btn-danger" type="cancel" />
+            <span style={{'display':'flex',justifyContent:'center'}}>
+           <button className="btn btn-primary mx-4"  onClick={handleSubmit}>Submit</button>
+           <Link to='/dashboard'><button className="btn btn-danger"  >Cancel</button></Link>
            </span>
            </form>
         </div>

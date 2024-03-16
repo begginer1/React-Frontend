@@ -4,6 +4,7 @@ import IncidentService from '../services/IncidentService';
 import { AuthContext } from './service/AuthProvider';
 
 import OfficerService from '../services/OfficerService';
+import StationHeadService from '../services/StationHeadService';
 const IncidentTable = (props) => {
   // console.log(props.value.incident)
   const {auth}=useContext(AuthContext)
@@ -25,8 +26,18 @@ const IncidentTable = (props) => {
       console.log(error)
     })
   }
+
+  const handleVerify=(incidentId)=>{
+    StationHeadService.VerifyIncident(incidentId,auth)
+    .then((response)=>{
+      console.log(response.data)})
+      .catch((error)=>
+      {
+        console.log(error)
+      })
+  }
   return (
-    <table className="table table-striped table-hover" >
+    <table className="table table-striped table-hover">
       <thead>
         <tr >
           <th className='Head'>id</th>
@@ -64,9 +75,17 @@ const IncidentTable = (props) => {
                         <td>{incident.image}</td>
                         <td>{incident.description}</td>
                         <td>{incident.location}</td>
-                        <td><button className='btn btn-danger' onClick={()=>handleCloseStatus(incident.id)}>Close Case</button></td>
-                        <td><button className='btn btn-primary' >Download</button></td>
-                        </tr>)
+                        {auth.userDto?.role === 'ROLE_STATION_HEAD' ? (
+                            incident.status === "Initiated" ? (
+                          <td><button className='btn btn-primary' onClick={() => handleVerify(incident.id)}>Verify</button></td>
+                          ) : (<td><button className='btn btn-secondary' >Verified</button></td>)) :
+                           (
+                            <>
+                          <td><button className='btn btn-danger' onClick={() => handleCloseStatus(incident.id)}>Close Case</button></td>
+                          <td><button className='btn btn-primary'>Download</button></td>
+                          </>
+                            )}</tr>)
+
                     
 
       }

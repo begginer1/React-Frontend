@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from 'react';
 import '../Css/Table.css'
 import { AuthContext } from './service/AuthProvider';
 import StationHeadService from '../services/StationHeadService';
+import { Link } from 'react-router-dom';
 const OfficerTable = () => {
   const {auth}=useContext(AuthContext)
   const [OfficerList,setOfficerList]=useState([]);
@@ -16,7 +17,7 @@ console.log(auth)
     .catch(error=>console.log(error))
   },[])
   return (
-    <table className="table table-striped table-hover" style={{backgroundColor:'green'}}>
+    <table className="table table-striped table-hover" >
       <thead>
         <tr >
           <th className='Head'>OfficerId</th>
@@ -46,6 +47,7 @@ console.log(auth)
             <td>{officer.email}</td>
             <td>{officer.rank}</td>
             <td>{officer.badgeNumber}</td>
+            <td><Link to="/AssignOfficer"><button className='btn btn-primary'>Assign Incident</button></Link></td>
           </tr>)
         }
       </tbody>

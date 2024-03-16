@@ -4,17 +4,17 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faGauge,faHouse,faFile } from '@fortawesome/free-solid-svg-icons'
 import StationHeadProfile from './StationHeadProfile'
 import OfficerTable from './OfficerTable'
-import { useContext, useEffect } from 'react'
+import { useContext, useEffect, useState } from 'react'
 import { AuthContext } from './service/AuthProvider'
 import IncidentTable from './IncidentTable'
 import StationHeadService from '../services/StationHeadService'
 export default function StationHeadDashboard()
 { const {auth} =useContext(AuthContext)
-console.log(auth)
+const [incident,setIncident]=useState([])
 
 useEffect(()=>{
 StationHeadService.getAllIncident(auth).then((response)=>{
-        console.log(response.data)
+        setIncident(response.data)
     })
     .catch(error=>console.log(error)
 )
@@ -32,24 +32,19 @@ StationHeadService.getAllIncident(auth).then((response)=>{
                 </div>
             
             
-            <div className="NonSlideBar">
+            <div className="NonSlideBar" >
                 <p className ="text"style={{alignSelf:'center'}}>Dashboard</p>
             <div className="UserDetails">
             
             <StationHeadProfile value={auth?.userDto}/>
-           {/* <IncidentTypeComponent/> */}
-           <div style={{display:'flex',flexDirection:'column', justifyContent:'space-between'}}>
-           <div className="Block"/>
-           {/* <IncidentTable/> */}
-           <div className="Block" ></div>
+           
+           <div style={{display:'flex',flexDirection:'column',alignContent:'space-between',overflow:'scroll', width:'60%'}}>
+           <OfficerTable/>
            </div>
           
             </div>
             <div className='DashBoardTable'>
-            <OfficerTable/>
-            <div style={{width:'100%',display:'flex',justifyContent:'center'}}>
-          
-            </div>
+            <IncidentTable value={incident}/>
             </div>
             </div>
             </div>

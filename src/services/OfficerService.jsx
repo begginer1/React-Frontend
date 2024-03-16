@@ -33,10 +33,13 @@ async IncidentOfOfficer(officerId,TokenObj)
 
  closeIncident(incidentId,TokenObj)
 {
-    console.log(TokenObj)
-    return axios.put(BASE_REST_API_URL+'ClosedIncidentById/'+incidentId,
+    console.log(TokenObj.accessToken)
+    return axios.put(BASE_REST_API_URL+'ClosedIncidentById?incidentId='+incidentId,{},
     {
         headers:{
+            'Access-Control-Allow-Origin': '*',
+        'Access-Control-Allow-Methods':'GET,PUT,POST,DELETE',
+        'Access-Control-Allow-Credentials':true,
          Authorization:`Bearer ${TokenObj.accessToken}`
         }
     });
