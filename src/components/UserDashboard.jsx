@@ -1,23 +1,23 @@
 
 import '../Css/UserDashboard.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faGauge,faHouse,faFile } from '@fortawesome/free-solid-svg-icons'
+import { faGauge,faHouse,faRightFromBracket } from '@fortawesome/free-solid-svg-icons'
 import { IncidentTypeComponent } from './IncidentTypeComponent'
 import ProfileCard from './ProfileCard'
-import { Link } from 'react-router-dom'
+import { Link, Navigate, useNavigate } from 'react-router-dom'
 import {  useContext, useEffect, useState } from 'react'
 import { AuthContext} from './service/AuthProvider'
 import UserService from '../services/UserService'
 import IncidentTable from './IncidentTable'
  function UserDashboard(){
 
-    const {auth,setAuth}= useContext(AuthContext)
+    const {auth,setAuth,userId,setUserId,setIncId}= useContext(AuthContext)
 
 const [userObj,setUserObj]=useState({})
 const [refreshCard,setRefreshCard]=useState(true)
 // const[userId,SetUserId]=useState(1)
 //    console.log(TokenObj.token)
-const {userId}=useContext(AuthContext)
+const navigate=useNavigate()
 // console.log("auth",userId)
 useEffect(()=>
 {
@@ -32,7 +32,15 @@ console.log(error)
 })
 },[userObj])
 
-
+const handleLogOut=()=>
+{
+    
+    setAuth({})
+    setUserId(0)
+    setIncId(0)
+    console.log("Logged Out")
+    navigate("/home")
+}
    
     return (
         <div >
@@ -42,7 +50,7 @@ console.log(error)
                 <div className="SlideBarChild ">
                 <Link to="/Dashboard" ><FontAwesomeIcon icon={faGauge} /></Link>
                 <Link to="/Home" ><FontAwesomeIcon icon={faHouse}/></Link>
-                <Link to=""><FontAwesomeIcon icon={faFile}/> </Link>        
+                <button onClick={handleLogOut}><FontAwesomeIcon icon={faRightFromBracket}/>  </button>      
                 </div>
                 </div>
             

@@ -26,7 +26,7 @@ export const LostPropertyForm=()=>
         console.log(incidentObj);
         UserService.GenerateIncident(userId,incidentObj,auth).then((response)=>
         {
-            console.log(response)
+           
             navigate('/UserDashboard')
         })
         .catch((error)=>{

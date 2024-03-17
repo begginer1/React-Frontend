@@ -30,7 +30,7 @@ export function  HomePage()
         </div>
         
         <p className='CrimeInfo'>Property Which Cannot Be Located Does Not Include Property That You Think Was Taken From Your Possession. Example: Forgetting a Package On The Subway</p>
-        <p className='Register'><Link to='/LostProperty' className="btn btn-secondary">Register</Link></p>
+        <p className='Register'>{auth.accessToken!==undefined?<Link to='/LostProperty' className="btn btn-secondary">Register</Link>:<Link to='/SignIn' className="btn btn-secondary">Register</Link>}</p>
      
       </div>
       <div className="col-xl-3">
@@ -40,7 +40,7 @@ export function  HomePage()
        </div>
        <div >
         <p className='CrimeInfo'>Intentional Damage To Property By A Person Example:Intentionally Breaking A Car Window Purposely OR Recklessly Causes Another To Suffer Pecuniary Loss By Deception OR Threat.</p>
-        <p className='Register  '><Link to='/Mischief'className="btn btn-secondary" href="#">Register</Link></p>
+        <p className='Register  '>{auth.accessToken!==undefined?<Link to='/Mischief'className="btn btn-secondary" href="#">Register</Link>:<Link to='/SignIn' className="btn btn-secondary">Register</Link>}</p>
         </div>
       </div>
       <div className="col-xl-3">
@@ -51,7 +51,7 @@ export function  HomePage()
         <div >
         <p className='CrimeInfo'>Property That Was Taken Without Permission Valued at Rs.1000 OR Less. Does Not Include Property That Was Forcibly Taken From You.
           Example: Bike being stolen IN front OF A store</p>
-        <p className='Register'><Link to='/PetitLarency' className="btn btn-secondary">Register</Link></p>
+        <p className='Register'>{auth.accessToken!==undefined?<Link to='/PetitLarency' className="btn btn-secondary">Register</Link>:<Link to='/SignIn' className="btn btn-secondary">Register</Link>}</p>
       </div>
       </div>
 
@@ -62,7 +62,7 @@ export function  HomePage()
         </div>
         <div>
         <p className='CrimeInfo'>Intentionally Drawing, Scratching, OR Etching ON Property. Example: Spray Painting A Store Front. If Reporting Graffiti, Upload A Picture OF Person Performing Graffiti</p>
-        <p className='Register'><Link to='/Graffeti' className="btn btn-secondary" href="#">Register</Link></p>
+        <p className='Register'>{auth.accessToken!==undefined?<Link to='/Graffeti' className="btn btn-secondary" href="#">Register</Link>:<Link to='/SignIn' className="btn btn-secondary">Register</Link>}</p>
         </div>
       </div>
       </div>

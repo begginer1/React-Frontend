@@ -22,7 +22,7 @@ const SignUpForm = () => {
        
         const LoginData={'email':email,'name':name,'password':password,'username':username,roles:[selectedOption]}
         console.log(LoginData)
-        SignInServices.Register(LoginData) .then( (response)=> {
+        SignInServices.Register(LoginData).then( (response)=> {
             console.log(response);
           })
           .catch(function (error) {

@@ -11,14 +11,17 @@ const [rank,setRank]=useState('')
 const [badgeNo,setBadgeNo]=useState('')
     const {auth}=useContext(AuthContext)
     const navigate=useNavigate()
-    const handleSubmit=()=>
+    console.log(auth)
+    const handleSubmit=(e)=>
     {
+        e.preventDefault()
         const officer={"badgeNumber":badgeNo,
         "name":name,
         "rank":rank,
         "email":email}
         StationHeadService.RegisterOfficer(officer,auth).then((response)=>{
-        navigate('/dashboard')
+            console.log(response)
+            navigate('/dashboard')
     })
         .catch(error=>console.log(error))
     }

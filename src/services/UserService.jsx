@@ -24,7 +24,7 @@ class UserService {
             headers:{
                 Authorization:`Bearer ${TokenObj.accessToken}`
          
-                // Authorization:`Bearer eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiJzYWNoaW4xIiwicm9sZSI6IlJPTEVfVVNFUiIsImlhdCI6MTcxMDIyOTk0NiwiZXhwIjoxNzEwODM0NzQ2fQ.q--2Z2DkHrAW4iB97V7X1bJWIBZJw8A_cRTsfVr6AmnKQc2phuE3HbRSBmnXFa4e`
+               
             }
         });
     }
@@ -35,7 +35,7 @@ class UserService {
             headers:{
                 Authorization:`Bearer ${TokenObj.accessToken}`
          
-                // Authorization:`Bearer eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiJzYWNoaW4xIiwicm9sZSI6IlJPTEVfVVNFUiIsImlhdCI6MTcxMDIyOTk0NiwiZXhwIjoxNzEwODM0NzQ2fQ.q--2Z2DkHrAW4iB97V7X1bJWIBZJw8A_cRTsfVr6AmnKQc2phuE3HbRSBmnXFa4e`
+               
             }
         });
     }

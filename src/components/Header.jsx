@@ -1,11 +1,17 @@
 import { Link } from 'react-router-dom'
 import '../Css/Header.css'
 import brandImage from '../images/brand.png'
+import { useContext, useEffect } from 'react'
+import { AuthContext } from './service/AuthProvider'
+import UserService from '../services/UserService'
+
 
 export const Header=()=>
 {
-  
- 
+
+  const {userId,auth}=useContext(AuthContext)
+  console.log(auth)
+
     return(
      
     <header >
@@ -32,10 +38,10 @@ export const Header=()=>
     
         <span className="button">
           <div>
-        <button className="btn btn-warning text" ><Link to='/SignIn'>Login</Link></button>
+        {userId!=0? <span className='text' style={{color:'yellow',marginTop:'2%'}}>Hello {auth?.userDto?.username}</span>:<button className="btn btn-warning text" ><Link to='/SignIn'>Login</Link></button>}
         </div>
         <div>
-        <button className="btn btn-warning text"  ><Link to='/SignUp'>SignUp</Link></button>
+        {userId!=0? <></>: <button className="btn btn-warning text"  ><Link to='/SignUp'>SignUp</Link></button>}
         </div>
       </span>
       </div> 

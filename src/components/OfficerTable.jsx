@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom';
 const OfficerTable = () => {
   const {auth}=useContext(AuthContext)
   const [OfficerList,setOfficerList]=useState([]);
+  
   useEffect(()=>
   {
     StationHeadService.getAllOfficers(auth).then((response)=>

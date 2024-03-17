@@ -14,7 +14,7 @@ export function IncidentTypeComponent(props){
    const getNumberOfCase=(incidentType)=>{
         IncidentService.getNoIncident(userId,auth,incidentType).then((response)=>
         {
-            console.log(response.data)
+           
             if(incidentType==="Graffeti")
             setCaseNoGr(response.data)
             else if(incidentType==="Criminal Mischief")
