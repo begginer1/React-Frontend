@@ -21,7 +21,7 @@ class IncidentService {
     async deleteIncident(incidentId,TokenObj)
     {
        
-        return axios.get(BASE_REST_API_URL+"deleteIncident/"+incidentId,
+        return axios.delete(BASE_REST_API_URL+"deleteIncident/"+incidentId,
         {
             headers:{
                 'Access-Control-Allow-Origin': '*',

@@ -13,7 +13,7 @@ export  const CriminalMischeifForm=()=>
     const [location ,SetLocation]=useState('')
     const navigate=useNavigate()
     const {auth,userId}=useContext(AuthContext)
-    console.log(auth);
+    
     const handleSubmit=(e)=>
     {
         e.preventDefault()

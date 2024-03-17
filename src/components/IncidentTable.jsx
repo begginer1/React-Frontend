@@ -5,10 +5,11 @@ import { AuthContext } from './service/AuthProvider';
 
 import OfficerService from '../services/OfficerService';
 import StationHeadService from '../services/StationHeadService';
+import { Link, Navigate, useNavigate } from 'react-router-dom';
 const IncidentTable = (props) => {
   // console.log(props.value.incident)
-  const {auth}=useContext(AuthContext)
-
+  const navigate=useNavigate()
+  const {incId,auth,setIncId}=useContext(AuthContext)
 
   const deleteEvent=(incidentId)=>{
     IncidentService.deleteIncident(incidentId,auth).then((response)=>{
@@ -36,6 +37,12 @@ const IncidentTable = (props) => {
         console.log(error)
       })
   }
+  const handleDownload=(incidentId)=>
+  {
+    console.log(incidentId)
+    setIncId(incidentId)
+    navigate("/downloadreport")
+  }
   return (
     <table className="table table-striped table-hover">
       <thead>
@@ -62,8 +69,9 @@ const IncidentTable = (props) => {
                             <td>{incident.image}</td>
                             <td>{incident.description}</td>
                             <td>{incident.location}</td>
-                            {/* <td><Link to={`/update/${events.id}`}className='btn btn-success'>update</Link><br/> */}
+                          
                             <td><button className='btn btn-danger' onClick={()=>deleteEvent(incident.id)}>Delete</button></td>
+                            <td><button className='btn btn-primary'  onClick={(e)=>handleDownload(incident.id)}>Download</button></td>
                         </tr>):
                         props.value?.map((incident,key)=> <tr key={key}>
                         <td>{incident.id}</td>
@@ -82,7 +90,7 @@ const IncidentTable = (props) => {
                            (
                             <>
                           <td><button className='btn btn-danger' onClick={() => handleCloseStatus(incident.id)}>Close Case</button></td>
-                          <td><button className='btn btn-primary'>Download</button></td>
+                          <td><button className='btn btn-primary'  onClick={(e)=>handleDownload(incident.id)}>Download</button></td>
                           </>
                             )}</tr>)
 

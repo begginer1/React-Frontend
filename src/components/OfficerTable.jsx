@@ -6,16 +6,22 @@ import { Link } from 'react-router-dom';
 const OfficerTable = () => {
   const {auth}=useContext(AuthContext)
   const [OfficerList,setOfficerList]=useState([]);
-console.log(auth)
   useEffect(()=>
   {
     StationHeadService.getAllOfficers(auth).then((response)=>
     {
-      console.log(response.data)
+    
       setOfficerList(response.data)
     })
     .catch(error=>console.log(error))
-  },[])
+  },[OfficerList])
+
+  const handleDeleteOfficer=(officerId)=>
+  {
+    StationHeadService.deleteOfficer(officerId,auth).then((response)=>
+    console.log(response))
+    .catch((error)=>console.log(error))
+  }
   return (
     <table className="table table-striped table-hover" >
       <thead>
@@ -48,6 +54,7 @@ console.log(auth)
             <td>{officer.rank}</td>
             <td>{officer.badgeNumber}</td>
             <td><Link to="/AssignOfficer"><button className='btn btn-primary'>Assign Incident</button></Link></td>
+            <td><button className='btn btn-primary' onClick={()=>handleDeleteOfficer(officer.id)}>Delete </button></td>
           </tr>)
         }
       </tbody>

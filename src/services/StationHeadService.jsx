@@ -4,7 +4,7 @@ const BASE_REST_API_URL = "http://localhost:8082/api/v1/Stationhead/"
 class StationHeadService {
    
     getAllIncident(TokenObj){
-        console.log("token received",TokenObj.accessToken)
+       
         return axios.get(BASE_REST_API_URL+"ViewAllIncident",
         {
             headers:{
@@ -37,8 +37,8 @@ class StationHeadService {
     }
 
     VerifyIncident(IncidentId,TokenObj){
-        console.log(IncidentId)
-        return axios.put(BASE_REST_API_URL +"ChangeStatus?incidentId="+IncidentId,
+     
+        return axios.put(BASE_REST_API_URL +"ChangeStatus?incidentId="+IncidentId,{},
         {
             headers:{
                 Authorization:`Bearer ${TokenObj.accessToken}`
@@ -49,8 +49,20 @@ class StationHeadService {
     }
 
     AssignIncidentToOfficer(incidentId,officerId,TokenObj){
-        console.log(TokenObj.accessToken)
+       
         return axios.post(BASE_REST_API_URL +"AssignOfficerToIncident/"+incidentId+'/officer/'+officerId,{},
+        {
+            headers:{
+                'Authorization':`Bearer ${TokenObj.accessToken}`
+         
+                
+            }
+        })  
+    }
+
+    deleteOfficer(officerId,TokenObj){
+       
+        return axios.delete(BASE_REST_API_URL +"DeleteOfficer?officerId="+officerId,
         {
             headers:{
                 'Authorization':`Bearer ${TokenObj.accessToken}`

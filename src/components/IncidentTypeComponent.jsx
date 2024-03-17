@@ -3,7 +3,7 @@ import NoOfIncidentCard from "./NoOfIncidentCard";
 import { AuthContext } from "./service/AuthProvider";
 import IncidentService from "../services/IncidentService";
 
-export function IncidentTypeComponent(){
+export function IncidentTypeComponent(props){
     const [caseNoPL,setCaseNoPl]=useState(0)
     const [caseNoCM,setCaseNoCm]=useState(0)
     const [caseNoGR,setCaseNoGr]=useState(0)
@@ -63,7 +63,7 @@ export function IncidentTypeComponent(){
             getNumberForAssignOfCase("Lost Property") 
             getNumberForAssignOfCase ("Petit Larceny") 
         }
-    },[])
+    },[props.refresh])
     return(
         <div style={{width:'100%'}}>
             <div  className="Block" ><p style={{textAlign:'center',fontWeight:'bold'}}>Number of Incidents</p></div>

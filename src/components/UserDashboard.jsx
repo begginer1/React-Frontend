@@ -1,23 +1,20 @@
-import  {Header} from './Header' 
-import  Footer  from "./Footer"
+
 import '../Css/UserDashboard.css'
-import brandImage from '../images/brand.png'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faGauge,faHouse,faFile } from '@fortawesome/free-solid-svg-icons'
 import { IncidentTypeComponent } from './IncidentTypeComponent'
 import ProfileCard from './ProfileCard'
-import Table from './IncidentTable'
 import { Link } from 'react-router-dom'
-import { createContext, useContext, useEffect, useState } from 'react'
+import {  useContext, useEffect, useState } from 'react'
 import { AuthContext} from './service/AuthProvider'
 import UserService from '../services/UserService'
 import IncidentTable from './IncidentTable'
  function UserDashboard(){
 
     const {auth,setAuth}= useContext(AuthContext)
-console.log("token",auth)
-const [userObj,setUserObj]=useState({})
 
+const [userObj,setUserObj]=useState({})
+const [refreshCard,setRefreshCard]=useState(true)
 // const[userId,SetUserId]=useState(1)
 //    console.log(TokenObj.token)
 const {userId}=useContext(AuthContext)
@@ -28,13 +25,14 @@ useEffect(()=>
 UserService.GetUser(userId,auth).then((response)=>{
     // console.log(response.data)
     setUserObj(response.data)
+    setRefreshCard(!refreshCard)
 })
 .catch((error)=>{
 console.log(error)
 })
-},[])
+},[userObj])
 
-  
+
    
     return (
         <div >
@@ -54,7 +52,7 @@ console.log(error)
             <div className="UserDetails">
             
             <ProfileCard value={userObj}/>
-           <IncidentTypeComponent value={userId}/>
+           <IncidentTypeComponent refresh={refreshCard}/>
 
             </div>
             <div className='DashBoardTable' >

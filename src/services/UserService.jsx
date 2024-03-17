@@ -53,7 +53,19 @@ class UserService {
         });
     }
 
-
+    async downloadReport(incidentId,TokenObj)
+    {
+       
+        return axios.get(BASE_REST_API_URL+'GenerateReport?incidentId='+incidentId,
+        {
+            headers:{
+                'Access-Control-Allow-Origin': '*',
+            'Access-Control-Allow-Methods':'GET,PUT,POST,DELETE',
+            'Access-Control-Allow-Credentials':true,
+             Authorization:`Bearer ${TokenObj.accessToken}`
+            }
+        });
+    }
  
 }
 export default new UserService();

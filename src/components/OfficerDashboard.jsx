@@ -16,7 +16,7 @@ export default function OfficerDashboard()
     const {auth,userId}=useContext(AuthContext)
     const [officerObj,setOfficerObj]= useState({})
     const [incident,setIncident]=useState([])
-    console.log(userId)
+    
     useEffect(()=>
 {
     
@@ -32,13 +32,12 @@ useEffect(()=>
 {
     
     OfficerService.IncidentOfOfficer(userId,auth).then((response)=>{
-    console.log(response.data)
         setIncident(response.data)
 })
 .catch((error)=>{
 console.log(error)
 })
-},[])
+},[incident])
     return (
         <div >
             

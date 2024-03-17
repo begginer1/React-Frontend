@@ -18,7 +18,7 @@ StationHeadService.getAllIncident(auth).then((response)=>{
     })
     .catch(error=>console.log(error)
 )
-},[])
+},[incident])
     return (
         <div >
             
