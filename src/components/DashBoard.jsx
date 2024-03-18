@@ -1,6 +1,6 @@
 import { useContext, useEffect, useState } from "react"
 import UserService from "../services/UserService"
-import { AuthContext } from "./service/AuthProvider"
+import { AuthContext } from "./context/AuthProvider"
 import { RegisterUserForm } from "./RegisterUserForm"
 import UserDashboard from "./UserDashboard"
 import { useNavigate } from "react-router-dom"

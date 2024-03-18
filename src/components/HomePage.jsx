@@ -4,21 +4,18 @@ import { Header } from './Header';
 import Footer from './Footer';
 import { Link } from 'react-router-dom';
 import { createContext, useContext, useEffect } from 'react';
-import { AuthContext } from './service/AuthProvider';
+import { AuthContext } from './context/AuthProvider';
 export function  HomePage()
-{
-  const {auth,setAuth}=useContext(AuthContext)
-  console.log("Homepage",auth)
-  useEffect(()=>{
-   if(auth!=null){
-   console.log("logged in")
-   console.log(auth)
-  }
-  },[auth])
+{ 
+  const {auth}=useContext(AuthContext)
+ 
+
+  
+
     return (
       <div>
-        <Header/>
-      <div className="HomeImageContainer">
+        <Header />
+      <div className="HomeImageContainer" >
         <img src="https://static.independent.co.uk/s3fs-public/thumbnails/image/2016/05/24/15/cyber-crime-police.jpg" alt='images not loaded' height="100%" width="100%" />
       </div>
       <div className='container-fluid'>

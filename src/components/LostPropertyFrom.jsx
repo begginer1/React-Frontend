@@ -2,7 +2,7 @@ import { useContext, useState } from 'react'
 import '../Css/RegisterUserForm.css'
 import UserService from '../services/UserService'
 import { useNavigate } from 'react-router-dom'
-import { AuthContext } from './service/AuthProvider'
+import { AuthContext } from './context/AuthProvider'
 export const LostPropertyForm=()=>
 {
     const [incidentDate ,SetIncidentDate]=useState('')

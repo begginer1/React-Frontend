@@ -1,7 +1,7 @@
 import React, { useContext, useState } from 'react';
 import '../Css/SignInForm.css'
 import AuthServices from '../services/AuthServices';
-import { AuthContext } from './service/AuthProvider';
+import { AuthContext } from './context/AuthProvider';
 import { Navigate, useNavigate } from 'react-router-dom';
 
 const SignInForm = () => {

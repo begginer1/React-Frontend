@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import '../Css/Table.css'
 import IncidentService from '../services/IncidentService';
-import { AuthContext } from './service/AuthProvider';
+import { AuthContext } from './context/AuthProvider';
 
 import OfficerService from '../services/OfficerService';
 import StationHeadService from '../services/StationHeadService';

@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react';
 import '../Css/Table.css'
-import { AuthContext } from './service/AuthProvider';
+import { AuthContext } from './context/AuthProvider';
 import StationHeadService from '../services/StationHeadService';
 import { Link } from 'react-router-dom';
 const OfficerTable = () => {

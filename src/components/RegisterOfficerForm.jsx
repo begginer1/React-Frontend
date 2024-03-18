@@ -1,6 +1,6 @@
 import { useContext, useState } from 'react'
 import '../Css/RegisterUserForm.css'
-import { AuthContext } from './service/AuthProvider'
+import { AuthContext } from './context/AuthProvider'
 import StationHeadService from '../services/StationHeadService'
 import { Link, useNavigate } from 'react-router-dom'
 import { Button } from 'bootstrap'

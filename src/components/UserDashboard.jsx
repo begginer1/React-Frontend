@@ -6,7 +6,7 @@ import { IncidentTypeComponent } from './IncidentTypeComponent'
 import ProfileCard from './ProfileCard'
 import { Link, Navigate, useNavigate } from 'react-router-dom'
 import {  useContext, useEffect, useState } from 'react'
-import { AuthContext} from './service/AuthProvider'
+import { AuthContext} from './context/AuthProvider'
 import UserService from '../services/UserService'
 import IncidentTable from './IncidentTable'
  function UserDashboard(){

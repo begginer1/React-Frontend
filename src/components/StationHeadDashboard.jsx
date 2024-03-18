@@ -5,10 +5,11 @@ import { faGauge,faHouse,faFile, faRightFromBracket } from '@fortawesome/free-so
 import StationHeadProfile from './StationHeadProfile'
 import OfficerTable from './OfficerTable'
 import { useContext, useEffect, useState } from 'react'
-import { AuthContext } from './service/AuthProvider'
+import { AuthContext } from './context/AuthProvider'
 import IncidentTable from './IncidentTable'
 import StationHeadService from '../services/StationHeadService'
 import { Link, useNavigate } from 'react-router-dom'
+import { ToastContainer, toast } from 'react-toastify'
 export default function StationHeadDashboard()
 { const {auth,setAuth,setUserId,setIncId} =useContext(AuthContext)
 const [incident,setIncident]=useState([])
@@ -28,6 +29,9 @@ const handleLogOut=()=>
     setUserId(0)
     setIncId(0)
     console.log("Logged Out")
+    toast.success("Logged out",{
+        position:'top-center'
+    })
     navigate("/home")
 }
     return (
@@ -38,7 +42,10 @@ const handleLogOut=()=>
                 <div className="SlideBarChild ">
                 <Link to="/Dashboard" ><FontAwesomeIcon icon={faGauge} /></Link>
                 <Link to="/Home" ><FontAwesomeIcon icon={faHouse}/></Link>
-                <button onClick={handleLogOut}><FontAwesomeIcon icon={faRightFromBracket}/>  </button>           
+                <div>
+                <button onClick={handleLogOut}><FontAwesomeIcon icon={faRightFromBracket}/> </button>           
+                <ToastContainer/> 
+                </div>
                 </div>
                 </div>
             

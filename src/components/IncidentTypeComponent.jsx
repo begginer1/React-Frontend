@@ -1,6 +1,6 @@
 import { useContext, useEffect, useState } from "react";
 import NoOfIncidentCard from "./NoOfIncidentCard";
-import { AuthContext } from "./service/AuthProvider";
+import { AuthContext } from "./context/AuthProvider";
 import IncidentService from "../services/IncidentService";
 
 export function IncidentTypeComponent(props){

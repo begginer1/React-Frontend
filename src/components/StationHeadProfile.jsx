@@ -18,7 +18,8 @@ return(
         </div>
 
         <span style={{height:'40%',alignSelf:'center', marginBottom:'3%'}}>
-          <Link to="/RegisterOfficerForm" ><button className='btn btn-primary'>Register Officer</button></Link>
+          <Link to="/RegisterOfficerForm" ><button className='btn btn-primary mx-4'>Register Officer</button></Link>
+          <Link to="/SignUp" ><button className='btn btn-primary'>Create StationHead</button></Link>
         </span>
         <div style={{backgroundColor:'#50C4ED', height:'18%'}}></div>
        

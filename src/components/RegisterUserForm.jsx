@@ -1,7 +1,7 @@
 import { createContext, useContext, useState } from 'react';
 import '../Css/RegisterUserForm.css'
 import UserService from '../services/UserService';
-import { AuthContext } from './service/AuthProvider';
+import { AuthContext } from './context/AuthProvider';
 import { useNavigate } from 'react-router-dom';
 export const RegisterUserForm=()=>
 {

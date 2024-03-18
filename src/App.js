@@ -16,12 +16,14 @@ import SignInForm from './components/SignInForm'
 import SignUpForm from './components/SignUpForm'
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { RegisterUserForm } from './components/RegisterUserForm';
-import { TokenProvider } from './components/service/AuthProvider';
+import { TokenProvider } from './components/context/AuthProvider';
 import { Dashboard } from './components/DashBoard';
 import {RegisterOfficerForm} from "./components/RegisterOfficerForm"
 import {AssignOfficer} from "./components/AssignOfficer"
 import Report from './components/DownloadReport';
 import DownloadReport from './components/DownloadReport';
+import 'react-toastify/dist/ReactToastify.css';
+import { RequireAuth } from './components/RequireAuth';
 function App() 
 { 
   return (
@@ -36,7 +38,13 @@ function App()
          
          
        <Routes>
-          <Route path="/home" element={<HomePage />} />   
+          <Route path="/home" element={<HomePage />} /> 
+          <Route path="*" element={<HomePage />} />
+          <Route path="SignIn" element={<SignInForm/>}/>
+          <Route path="/SignUp" element={<SignUpForm />} /> 
+
+          
+          <Route element={<RequireAuth/>} >  
           <Route path="/Dashboard" element={<Dashboard/>} /> 
           <Route path="/UserDashboard" element={<UserDashboard/>} /> 
           <Route path="/OfficerDashboard" element={<OfficerDashboard/>} /> 
@@ -47,10 +55,10 @@ function App()
           <Route path="/LostProperty" element={<LostPropertyForm/>} /> 
           <Route path="/RegisterUser"element={<RegisterUserForm/>}/>
           <Route path="/RegisterOfficerForm"element={<RegisterOfficerForm/>}/>
-          <Route path="SignIn" element={<SignInForm/>}/>
-          <Route path="/SignUp" element={<SignUpForm />} />
           <Route path="/AssignOfficer" element={<AssignOfficer/>} />
           <Route path="/downloadReport" element={<DownloadReport/>} />
+          </Route>
+         
       </Routes> 
      
 

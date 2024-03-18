@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import SignInServices from '../services/AuthServices';
 import { useNavigate } from 'react-router-dom';
-import 'bootstrap/dist/css/bootstrap.min.css'
+
+import { AuthContext } from './context/AuthProvider';
 
 const SignUpForm = () => {
     const [username,setUsername]=useState('');
@@ -10,17 +11,19 @@ const SignUpForm = () => {
     const [name,setName]=useState('');
   const navigate =useNavigate()
   const [selectedOption, setSelectedOption] = useState('');
-
+  const {auth}=useContext(AuthContext)
     // Function to handle the change in the dropdown selection
     const handleDropdownChange = (event) => {
       console.log(event.target.value)
         setSelectedOption(event.target.value);
     };
+
    const handleRegister=(e)=>
-    {
+    { const role="ROLE_STATION_HEAD"
       // console.log(e)
-       
-        const LoginData={'email':email,'name':name,'password':password,'username':username,roles:[selectedOption]}
+      e.preventDefault()
+      console.log(selectedOption)
+        const LoginData={'email':email,'name':name,'password':password,'username':username,roles:[auth?.userDto?.role==='ROLE_STATION_HEAD'?role:selectedOption]}
         console.log(LoginData)
         SignInServices.Register(LoginData).then( (response)=> {
             console.log(response);
@@ -38,7 +41,7 @@ const SignUpForm = () => {
         <div className="col-md-6">
           <div className="card">
             <div className="card-body">
-              <h3 className="card-title text-center mb-4">Register</h3>
+              <h3 className="card-title text-center mb-4">Register {auth?.userDto?.role==="ROLE_STATION_HEAD"?"Admin":<></>}</h3>
               <form >
                 <div className="form-group mb-3">
                   <label >Name</label>
@@ -56,14 +59,14 @@ const SignUpForm = () => {
                   <label htmlFor="password">Password</label>
                   <input type="password" className="form-control" id="password" placeholder="Password" onChange={(e)=>setPassword(e.target.value)}/>
                 </div>
+                {auth?.userDto?.role==="ROLE_STATION_HEAD"?<></>:
                 <div className="mt-4">
                 <label>Role</label>
-            <select className="ml-3" value={selectedOption} onChange={handleDropdownChange} style={{marginLeft:'3%'}}>
+           <select className="ml-3" value={selectedOption} onChange={handleDropdownChange} style={{marginLeft:'3%'}}>
               <option value="ROLE_USER">User</option>
               <option value="ROLE_OFFICER">Officer</option>
-              <option value="ROLE_STATION_HEAD">Station Head</option>
             </select>
-              </div>
+              </div>}
                 <div style={{display:'flex',justifyContent:'center',marginTop:'2%'}}>
                 <button type="submit" className="btn btn-primary btn-block mx-4" onClick={handleRegister}>Register</button>
                 <button type="submit" className="btn btn-danger btn-block">Cancel</button>

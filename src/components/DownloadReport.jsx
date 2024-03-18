@@ -1,6 +1,6 @@
 import React, { useContext, useEffect } from "react";
 import Profile from "../images/ProfilePic.png";
-import { AuthContext } from "./service/AuthProvider";
+import { AuthContext } from "./context/AuthProvider";
 
 import { useState } from "react";
 import UserService from "../services/UserService";

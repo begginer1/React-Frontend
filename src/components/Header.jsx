@@ -2,13 +2,13 @@ import { Link } from 'react-router-dom'
 import '../Css/Header.css'
 import brandImage from '../images/brand.png'
 import { useContext, useEffect } from 'react'
-import { AuthContext } from './service/AuthProvider'
+import { AuthContext } from './context/AuthProvider'
 import UserService from '../services/UserService'
 
 
 export const Header=()=>
 {
-
+ 
   const {userId,auth}=useContext(AuthContext)
   console.log(auth)
 
@@ -26,8 +26,8 @@ export const Header=()=>
           <li className="text">
             <Link to='/Home' className="HoverEffect text"name ='Home'  >Home</Link>
           </li>
-          <li className=" text">
-            <Link to='/' className="HoverEffect text" name='Register' >Register a Crime</Link>
+          <li    className=" text">
+            <span  className="HoverEffect text" name='Register' >Register a Crime</span>
           </li>
           <li className="text">
             <Link to='/Dashboard' className="HoverEffect text">Dashboard</Link>
