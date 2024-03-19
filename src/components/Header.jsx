@@ -10,7 +10,7 @@ export const Header=()=>
 {
  
   const {userId,auth}=useContext(AuthContext)
-  console.log(auth)
+  
 
     return(
      

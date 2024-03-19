@@ -2,7 +2,8 @@ import React, { useContext, useState } from 'react';
 import '../Css/SignInForm.css'
 import AuthServices from '../services/AuthServices';
 import { AuthContext } from './context/AuthProvider';
-import { Navigate, useNavigate } from 'react-router-dom';
+import {  useNavigate } from 'react-router-dom';
+import { ToastContainer, toast } from 'react-toastify';
 
 const SignInForm = () => {
   const{auth,setAuth}=useContext(AuthContext)
@@ -24,9 +25,14 @@ const SignInForm = () => {
       // console.log("auth",auth)
       navigate('/dashboard')
   })
-    .catch((error)=>
-    console.log(error))
-  }
+    .catch((error)=>{
+    console.log(error)
+    toast.warning("Wrong Password",
+    {
+      position:'top-center'
+    })
+  })
+}
   return (
     <div className='UserLoginForm'>
       <div className="container">
@@ -45,7 +51,7 @@ const SignInForm = () => {
                   <input type="password" className="form-control" id="password" placeholder="Password" onChange={(e)=>{setPassword(e.target.value)}}/>
                 </div>
                 <div style={{display:'flex',justifyContent:'center'}}>
-                <button type="submit" className="btn btn-primary btn-block mt-4  mx-4 " onClick={handleSubmit}>Sign In</button>
+                <div><button type="submit" className="btn btn-primary btn-block mt-4  mx-4 " onClick={handleSubmit}>Sign In</button>  <ToastContainer /></div>
                 <button type="submit" className="btn btn-primary btn-block mt-4  text-center">Cancel</button>
                 </div>
               </form>

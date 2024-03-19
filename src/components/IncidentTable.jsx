@@ -5,14 +5,18 @@ import { AuthContext } from './context/AuthProvider';
 
 import OfficerService from '../services/OfficerService';
 import StationHeadService from '../services/StationHeadService';
-import { Link, Navigate, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
+import { ToastContainer, toast } from 'react-toastify';
 const IncidentTable = (props) => {
   // console.log(props.value.incident)
   const navigate=useNavigate()
   const {incId,auth,setIncId}=useContext(AuthContext)
 
   const deleteEvent=(incidentId)=>{
+    
+    
     IncidentService.deleteIncident(incidentId,auth).then((response)=>{
+      
     })
     .catch((error)=>
     {
@@ -39,6 +43,7 @@ const IncidentTable = (props) => {
   }
   const handleDownload=(incidentId)=>
   {
+    
     console.log(incidentId)
     setIncId(incidentId)
     navigate("/downloadreport")
@@ -70,7 +75,7 @@ const IncidentTable = (props) => {
                             <td>{incident.description}</td>
                             <td>{incident.location}</td>
                           
-                            <td><button className='btn btn-danger' onClick={()=>deleteEvent(incident.id)}>Delete</button></td>
+                            <td><button className='btn btn-danger' onClick={()=>deleteEvent(incident.id)}>Delete</button> </td>
                             <td><button className='btn btn-primary'  onClick={(e)=>handleDownload(incident.id)}>Download</button></td>
                         </tr>):
                         props.value?.map((incident,key)=> <tr key={key}>

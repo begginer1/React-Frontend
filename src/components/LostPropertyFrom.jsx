@@ -3,6 +3,7 @@ import '../Css/RegisterUserForm.css'
 import UserService from '../services/UserService'
 import { useNavigate } from 'react-router-dom'
 import { AuthContext } from './context/AuthProvider'
+import { ToastContainer, toast } from 'react-toastify'
 export const LostPropertyForm=()=>
 {
     const [incidentDate ,SetIncidentDate]=useState('')
@@ -13,6 +14,28 @@ export const LostPropertyForm=()=>
     const navigate=useNavigate()
     const {auth,userId}=useContext(AuthContext)
     console.log(auth);
+
+    function validation()
+    {
+         
+    if (!incidentDate || !itemName || !description || !itemAmount || !location) {
+       toast.warning('Please fill in all fields.',
+       {
+        position:'top-center'
+       });
+        return false;
+      }
+  
+      // Check if Item Amount is numeric
+      if (isNaN(itemAmount)) {
+        toast.warning('Item Amount must Be numeric',
+       {
+        position:'top-center'
+       });
+        return false;
+      }
+      return true
+    }
     const handleSubmit=(e)=>
     {
         e.preventDefault()
@@ -24,6 +47,7 @@ export const LostPropertyForm=()=>
         "description": description,
         "location": location};
         console.log(incidentObj);
+        if(validation()){
         UserService.GenerateIncident(userId,incidentObj,auth).then((response)=>
         {
            
@@ -33,6 +57,7 @@ export const LostPropertyForm=()=>
             console.log(error);
         })
     }
+}
     return(
         <div className="RegisterContainer">
         <div className="FormRegister">
@@ -60,7 +85,7 @@ export const LostPropertyForm=()=>
             <input type="text"placeholder=" Location" required onChange={(e)=>SetLocation(e.target.value)}/>
             <br/>
             <br/>
-           <input className="btn btn-primary" type="submit" onClick={handleSubmit}/>
+           <div><button className="btn btn-primary"  onClick={handleSubmit}>Submit</button><ToastContainer/></div>
         </form>
     </div>
     

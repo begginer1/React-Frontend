@@ -3,6 +3,8 @@ import '../Css/RegisterUserForm.css'
 import UserService from '../services/UserService'
 import { useNavigate } from 'react-router-dom'
 import { AuthContext } from './context/AuthProvider'
+import { ToastContainer, toast } from 'react-toastify'
+import { Button } from 'bootstrap'
 export  const CriminalMischeifForm=()=>
 {
     const [imageUrl,SetImageUrl]=useState('')
@@ -14,6 +16,18 @@ export  const CriminalMischeifForm=()=>
     const navigate=useNavigate()
     const {auth,userId}=useContext(AuthContext)
     
+    function validation()
+    {
+      // Validation checks
+      if (incidentDate.trim().length===0 || description.trim().length===0 || location.trim().length===0) {
+        toast.warning('* field cannot not be  empty.',
+        {
+            position:'top-center'
+        });
+        return false;
+      }
+      return true    
+    }
     const handleSubmit=(e)=>
     {
         e.preventDefault()
@@ -24,6 +38,7 @@ export  const CriminalMischeifForm=()=>
         "description": description,
         "location": location};
         console.log(incidentObj);
+        if(validation()){
         UserService.GenerateIncident(userId,incidentObj,auth).then((response)=>
         {
             console.log(response)
@@ -33,6 +48,7 @@ export  const CriminalMischeifForm=()=>
             console.log(error);
         })
     }
+}
     return(
         <div className="RegisterContainer">
         <div className="FormRegister">
@@ -61,7 +77,7 @@ export  const CriminalMischeifForm=()=>
             {/* form validation not working ex required */}
             <br/>
             <br/>
-           <input className="btn btn-primary" type="submit" onClick={handleSubmit}/>
+           <div><button className="btn btn-primary"  onClick={handleSubmit}>Submit</button><ToastContainer/></div>
            </form>
     </div>
     

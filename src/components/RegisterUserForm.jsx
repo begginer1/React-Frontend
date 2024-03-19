@@ -3,6 +3,7 @@ import '../Css/RegisterUserForm.css'
 import UserService from '../services/UserService';
 import { AuthContext } from './context/AuthProvider';
 import { useNavigate } from 'react-router-dom';
+import { ToastContainer, toast } from 'react-toastify';
 export const RegisterUserForm=()=>
 {
     const {auth,userId,setUserId}=useContext(AuthContext);
@@ -14,6 +15,25 @@ export const RegisterUserForm=()=>
     const[dob,setDob]=useState('');
     const[email,setEmail]=useState('');
     const navigate=useNavigate()
+
+    function validation()
+    {
+        if (!name.trim() || !address.trim() || !aadNo.trim() || !panNo.trim() || !dob.trim() || !email.trim()) {
+            toast.warning('Please fill in all fields.',
+            {
+                position:'top-center'
+            });
+            return false;
+          }
+          if (isNaN(aadNo)) {
+            toast.warning('Aadhar must be numeric',
+            {
+                position:'top-center'
+            });
+            return false;
+          }
+          return true;
+    }
     const HandleUserRegister=(e)=>
     { 
         e.preventDefault()
@@ -26,16 +46,18 @@ export const RegisterUserForm=()=>
         "email":email
     }
     console.log(UserData)
+    if(validation()){
         UserService.addUser(UserData,auth).then((response)=>{
             console.log(response.data)
             setUserId(response.data.id)
-            console.log("userId",userId)
+            // console.log("userId",userId)
             navigate('/UserDashboard')
         })
         .catch((error)=>{
             console.log(error)
         })
     }
+}
     return(
         <div className="RegisterContainer">
         <div className="FormRegister">
@@ -55,7 +77,7 @@ export const RegisterUserForm=()=>
                 <br /><br />
                 <label >Pan Card Number</label> 
                 <br />
-                <input type="text"placeholder=" Pan Card Number" onChange={(e)=>setPanNo(e.target.value)}/>
+                <input type="text"placeholder=" Pan Card Number" max="2007-01-01" onChange={(e)=>setPanNo(e.target.value)}/>
                 <br /> <br />
                 <label >Date of birth</label> 
                 <br />
@@ -65,7 +87,7 @@ export const RegisterUserForm=()=>
                 <br />
                 <input type="email"placeholder=" Email Address" onChange={(e)=>setEmail(e.target.value)}/>
                 <br /> <br />
-               <input className="btn btn-primary" type="submit" onClick={HandleUserRegister}/>
+               <div><button className="btn btn-primary"  onClick={HandleUserRegister}>Submit</button><ToastContainer/></div>
             </form>
         </div>
     </div>

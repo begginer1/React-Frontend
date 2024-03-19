@@ -3,6 +3,7 @@ import SignInServices from '../services/AuthServices';
 import { useNavigate } from 'react-router-dom';
 
 import { AuthContext } from './context/AuthProvider';
+import { ToastContainer, toast } from 'react-toastify';
 
 const SignUpForm = () => {
     const [username,setUsername]=useState('');
@@ -12,19 +13,65 @@ const SignUpForm = () => {
   const navigate =useNavigate()
   const [selectedOption, setSelectedOption] = useState('');
   const {auth}=useContext(AuthContext)
+
+  const validateForm = () => {
+    if (username.trim().length === 0 || !isNaN(username)) {
+      toast.error("Username must not be empty or only numeric",
+      {
+        position:'top-center'
+      })
+     
+      return false;
+    }
+    if (name.trim().length === 0 || !isNaN(name)) {
+     toast.error('Name must not be empty or only numeric.', {
+      position:'top-center'
+    });
+      return false;
+    }
+
+    if (password.trim().length === 0 || password.length < 8) {
+      toast.error('Password must not be empty and must be at least 8 characters long.', {
+        position:'top-center'
+      });
+      return false;
+    }
+    if (!email.trim()) {
+      toast.error('Email must not be empty.', {
+        position:'top-center'
+      });
+      return false;
+    }
+
+    if (!email.includes('@')) {
+      toast.error('Email must contain the "@" symbol.', {
+        position:'top-center'
+      });
+      return false;
+    }
+
+    return true;
+  };
+
+ 
     // Function to handle the change in the dropdown selection
     const handleDropdownChange = (event) => {
       console.log(event.target.value)
         setSelectedOption(event.target.value);
     };
 
+
+
+
+   
    const handleRegister=(e)=>
     { const role="ROLE_STATION_HEAD"
-      // console.log(e)
+     
       e.preventDefault()
-      console.log(selectedOption)
         const LoginData={'email':email,'name':name,'password':password,'username':username,roles:[auth?.userDto?.role==='ROLE_STATION_HEAD'?role:selectedOption]}
+      
         console.log(LoginData)
+        if(validateForm()){
         SignInServices.Register(LoginData).then( (response)=> {
             console.log(response);
           })
@@ -34,6 +81,7 @@ const SignUpForm = () => {
           console.log(LoginData)
           navigate('/SignIn')
     }
+  }
   return (
     <div className='UserLoginForm'>
     <div className="container">
@@ -68,7 +116,9 @@ const SignUpForm = () => {
             </select>
               </div>}
                 <div style={{display:'flex',justifyContent:'center',marginTop:'2%'}}>
-                <button type="submit" className="btn btn-primary btn-block mx-4" onClick={handleRegister}>Register</button>
+               <div> <button type="submit" className="btn btn-primary btn-block mx-4" onClick={handleRegister}>Register</button>
+               <ToastContainer  />
+                </div>
                 <button type="submit" className="btn btn-danger btn-block">Cancel</button>
                 </div>
               </form>
